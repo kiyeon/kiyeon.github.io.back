@@ -208,13 +208,13 @@
   
     <article>
   <header>
-    <h2><a href="http://blog.kiyeon.net/2016/02/10/Jekyll/">Jekyll</a></h2>
+    <h2><a href="http://blog.kiyeon.net/2015/06/12/history-command/">History Command</a></h2>
 
     <div class="post-meta">
 
   <div>
     <i class="fa fa-calendar fa-fw"></i>
-    <time>10 Feb 2016, 14:28</time>
+    <time>12 Jun 2015, 11:35</time>
   </div>
 
   
@@ -228,47 +228,28 @@
   </header>
 
   <p>
-  Link
- Jekyll Wiki  Themes  지킬로 만들어진 사이트 jekyllbootstrap.com jekyllthemes.org  
-  </p>
+  <p>Command line에서 명령을 실행하면 해당 명령이 기록에 남는다. 이 기록을 살펴보는 명령이 <code>history</code>다.</p>
 
-  
-</article>
+<h2 id="설정">설정</h2>
 
-  
-    <article>
-  <header>
-    <h2><a href="http://blog.kiyeon.net/2015/12/04/installing-linux-package/">리눅스 패키지 설치하기</a></h2>
+<p>이 설정은 bash기준이며 다른 쉘에서는 약간 다를 수 있다.<sup class="footnote-ref" id="fnref:1"><a rel="footnote" href="#fn:1">1</a></sup></p>
 
-    <div class="post-meta">
+<pre><code class="language-bash">export HISTTIMEFORMAT='%F %T '              # 로그에 날짜와 시간 출력
+export HISTIGNORE=&quot;pwd:ls:ls -ltr:&quot;         # pwd, ls, ls -ltr명령은 로그에 기록하지 않는다.
+export HISTCONTROL=ignorespace              # 명령 실행시 처음 스페이스가 포함되면 로그에 기록하지 않는다.
+export HISTCONTROL=ignoredups               # 명령이 중복되면 무시 (pwd를 연속으로 여러번 입력하면 로그에는 pwd하나만 기록된다)
+export HISTCONTROL=erasedups                # 중복로그를 삭제하고 최근로그만 남긴다.
+export HISTSIZE=450                         # 저장할 로그 개수 지정 (0을 지정하면 history 기능이 disable된다)
+export HISTFILESIZE=450                     # 저장할 로그 개수 지정
+export HISTFILE=/root/.commandline_warrior  # 히스토리 로그 파일 변경
+</code></pre>
 
-  <div>
-    <i class="fa fa-calendar fa-fw"></i>
-    <time>04 Dec 2015, 14:55</time>
-  </div>
-
-  
-
-  
-
-  
-
-</div>
-
-  </header>
-
-  <p>
-  Ubuntu 기본 Something along the lines of: dpkg &ndash;&gt; apt-get, aptitude &ndash;&gt; Synaptic, Software Center http://askubuntu.com/a/40781
-최신 버전 설치  최신 패키지 검색
-Ubuntu package building and hosting에서 최신 패키지를 검색한다. Binary packages built by this source에서 설치할 Binary package를 선택한다. Published versions에서 시스템에 맞는 버전을 선택한다.
-ex) sqlite3 3.9.2-1(amd64 binary) in ubuntu xenial Downloadable files에서 deb파일을 다운로드 한다.
-wget http://launchpadlibrarian.net/225502540/sqlite3_3.9.2-1_amd64.deb 다운로드한 deb을 설치한다.
-sudo dpkg -i sqlite3_3.9.2-1_amd64.deb 의존성 관련 패키지가 필요하면 Package relationships에서 deb을 받아 설치한다.
+<p></p>
   </p>
 
   
   <footer>
-    <a href="http://blog.kiyeon.net/2015/12/04/installing-linux-package/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
+    <a href="http://blog.kiyeon.net/2015/06/12/history-command/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
   </footer>
   
 </article>
@@ -276,13 +257,13 @@ sudo dpkg -i sqlite3_3.9.2-1_amd64.deb 의존성 관련 패키지가 필요하�
   
     <article>
   <header>
-    <h2><a href="http://blog.kiyeon.net/2015/12/02/ocr/">OCR</a></h2>
+    <h2><a href="http://blog.kiyeon.net/2015/06/12/vim/">VIM</a></h2>
 
     <div class="post-meta">
 
   <div>
     <i class="fa fa-calendar fa-fw"></i>
-    <time>02 Dec 2015, 10:18</time>
+    <time>12 Jun 2015, 10:08</time>
   </div>
 
   
@@ -296,44 +277,20 @@ sudo dpkg -i sqlite3_3.9.2-1_amd64.deb 의존성 관련 패키지가 필요하�
   </header>
 
   <p>
-   광학 문자 인식(Optical character recognition; OCR)
-Software  ABBYY FineReader - 문자 인식(OCR) 책 스캔 프로그램 추천 : 한글 영문 인식률 결과  Online OCR services  WeOCR CustomOCR Free OCR i2OCR  Open source  Tesseract - Tesseract Open Source OCR Engine (main repository)  3rdParty   
-  </p>
+  <p>나는 <a href="http://www.vim.org">vim</a>을 좋아하는데 그 이유는</p>
 
-  
-</article>
+<ul>
+<li>마우스 사용을 최소화하여 키보드로만 작업이 가능하고,</li>
+<li>프로그램이 작고 가볍고,</li>
+<li>그렇기에 웬만한 머신에는 <a href="http://www.vim.org">vim</a> 또는 vi가 설치되어있어 쉽게 에디팅이 가능하기 때문이다.<sup class="footnote-ref" id="fnref:1"><a rel="footnote" href="#fn:1">1</a></sup></li>
+</ul>
 
-  
-    <article>
-  <header>
-    <h2><a href="http://blog.kiyeon.net/2015/11/28/adding-and-expending-aws-EBS/">AWS EBS 확장및 추가하기</a></h2>
-
-    <div class="post-meta">
-
-  <div>
-    <i class="fa fa-calendar fa-fw"></i>
-    <time>28 Nov 2015, 18:40</time>
-  </div>
-
-  
-
-  
-
-  
-
-</div>
-
-  </header>
-
-  <p>
-  AWS EC2의 디스크가 Full이 되어 확장이 필요했다.
-볼륨 확장 Linux에서 EBS 볼륨의 스토리지 공간 확장
- 인스턴스를 Stop 시킨다. EBS Volume을 찾아 Snapshopt을 만든다. (복사용) Snapshot에서 2에서 만든 스냅샷을 선택하여 새로운 볼륨을 만든다. 여기서 확장할 사이즈를 정한다. ex) 8GB -&gt; 15GB, 볼륨이 커지면 비용이 발생하므로 SIMPLE MONTHLY CALCULATOR로 요금을 계산하자. 이전 볼륨을 분리(Detach Volume)하고 새로 만든 볼륨을 연결(Attach Volume)한다. 인스턴스를 다시 시작한다. 파일 시스템을 확장한다. 여기서부터는 Linux 파일 시스템 확장참조  볼륨 추가 인스턴스에 볼륨 추가
+<p></p>
   </p>
 
   
   <footer>
-    <a href="http://blog.kiyeon.net/2015/11/28/adding-and-expending-aws-EBS/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
+    <a href="http://blog.kiyeon.net/2015/06/12/vim/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
   </footer>
   
 </article>
@@ -341,13 +298,13 @@ Software  ABBYY FineReader - 문자 인식(OCR) 책 스캔 프로그램 추천 :
   
     <article>
   <header>
-    <h2><a href="http://blog.kiyeon.net/2015/11/28/lisp/">LISP</a></h2>
+    <h2><a href="http://blog.kiyeon.net/2015/06/11/ssh-escape/">SSH Escape</a></h2>
 
     <div class="post-meta">
 
   <div>
     <i class="fa fa-calendar fa-fw"></i>
-    <time>28 Nov 2015, 01:51</time>
+    <time>11 Jun 2015, 17:31</time>
   </div>
 
   
@@ -361,12 +318,113 @@ Software  ABBYY FineReader - 문자 인식(OCR) 책 스캔 프로그램 추천 :
   </header>
 
   <p>
-  LISP  표현 기능이 대단히 뛰어난 언어, 가장 복잡한 프로그래밍 아이디어를 명확하고 적절하게 표현할 수 있도록 설계. 많은 대기업이 핵심적인 업무에 리스프를 사용. 리스프는 작은 노력으로도 배울 수 있지만 컴퓨터 프로그래밍에 대해 깊은 통찰력을 갖게 한다. 확장성 있는 라이브러리를 비롯한 수많은 언어 기능을 지원하며 컴파일러/인터프리터를 무척 쉽게 수정할 수 있다. 리스프의 주된 원리를 따르는 모든 언어는 리스프의 변종이라 하고 그래서 리스프는 변종이 많다. 가장 많이 사용하는 리스프는 안시 커먼 리스프와 스킴 안시 커먼 리스프  1981년 많은 리스프 변종에 대응하고자 리스프 단체에서 커먼 리스프라는 리스프 명세서를 발표.
+  <p>ssh접속중 탈출하고 싶다면 탈출키 <code>~</code>를 사용한다.</p>
+
+<p></p>
   </p>
 
   
   <footer>
-    <a href="http://blog.kiyeon.net/2015/11/28/lisp/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
+    <a href="http://blog.kiyeon.net/2015/06/11/ssh-escape/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
+  </footer>
+  
+</article>
+
+  
+    <article>
+  <header>
+    <h2><a href="http://blog.kiyeon.net/2015/06/11/rotate-nohup-out-file/">rotate nohup out file</a></h2>
+
+    <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>11 Jun 2015, 09:07</time>
+  </div>
+
+  
+
+  
+
+  
+
+</div>
+
+  </header>
+
+  <p>
+  <p>nohup은 터미널이 종료되어도 프로세스를 종료시키지 않고 동작시킬때 사용한다.<sup class="footnote-ref" id="fnref:1"><a rel="footnote" href="#fn:1">1</a></sup></p>
+
+<pre><code class="language-bash">% nohup COMMAND        # nohup.out에 로그가 기록된다.
+% nohup COMMAND &gt; FILE # FILE에 로그가 기록된다.
+</code></pre>
+
+<p>표준출력과 표준에러는 출력파일을 지정하지 않으면 디폴트로 nohup.out에 기록된다.</p>
+
+<p>로그파일을 지우면 프로세스는 출력파일을 잃게되고 프로세스를 재기동하지 않는 이상 로그를 볼 방법이 없다. 디버깅이 어려워지는 상황이 되는것이다. 물론 로그를 표준출력에 의지하지 않고 내부 로깅처리를 한다면야 상관없겠지만 간단한 스크립트에 그런 코드까지 추가한다는게 번거롭고 쉽지 않기도 하다.</p>
+
+<p></p>
+  </p>
+
+  
+  <footer>
+    <a href="http://blog.kiyeon.net/2015/06/11/rotate-nohup-out-file/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
+  </footer>
+  
+</article>
+
+  
+    <article>
+  <header>
+    <h2><a href="http://blog.kiyeon.net/2015/06/09/peurogeuraemeoreul-wihan-ack-like-grep/">프로그래머를 위한 ack(like-grep)</a></h2>
+
+    <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>09 Jun 2015, 10:27</time>
+  </div>
+
+  
+
+  
+
+  
+  
+  
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+
+  </header>
+
+  <p>
+  <p><a href="http://unixhelp.ed.ac.uk/CGI/man-cgi?grep">grep</a>은 텍스트에서 키워드를 찾아내는 툴이다. 다음과 같이 사용한다.</p>
+
+<pre><code class="language-bash">% lsb_release --all | grep -i desc
+Description:    Ubuntu 14.04.2 LTS
+</code></pre>
+
+<p>데이터가 많으면 해당 키워드를 찾기가 힘든데 이때 컬러옵션<sup class="footnote-ref" id="fnref:grep-color"><a rel="footnote" href="#fn:grep-color">1</a></sup>을 사용할 수 있다.</p>
+
+<pre><code class="language-bash">% cat /etc/services | grep --color=auto -i http
+# Updated from http://www.iana.org/assignments/port-numbers and other
+# sources like http://www.freebsd.org/cgi/cvsweb.cgi/src/etc/services .
+http            80/tcp          www             # WorldWideWeb HTTP
+http            80/udp                          # HyperText Transfer Protocol
+https           443/tcp                         # http protocol over TLS/SSL
+https           443/udp
+http-alt        8080/tcp        webcache        # WWW caching service
+http-alt        8080/udp
+hkp             11371/tcp                       # OpenPGP HTTP Keyserver
+</code></pre>
+
+<p></p>
+  </p>
+
+  
+  <footer>
+    <a href="http://blog.kiyeon.net/2015/06/09/peurogeuraemeoreul-wihan-ack-like-grep/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
   </footer>
   
 </article>
@@ -378,11 +436,11 @@ Software  ABBYY FineReader - 문자 인식(OCR) 책 스캔 프로그램 추천 :
 
 <nav class="pagination" role="pagination">
   
-  <i class="fa fa-chevron-left"></i>
+  <a href="http://blog.kiyeon.net/page/2/"><i class="fa fa-chevron-left"></i></a>
   
-  <span>&nbsp;1 / 4&nbsp;</span>
+  <span>&nbsp;3 / 4&nbsp;</span>
   
-  <a href="http://blog.kiyeon.net/page/2/"><i class="fa fa-chevron-right"></i></a>
+  <a href="http://blog.kiyeon.net/page/4/"><i class="fa fa-chevron-right"></i></a>
   
 </nav>
 

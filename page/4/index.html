@@ -208,13 +208,13 @@
   
     <article>
   <header>
-    <h2><a href="http://blog.kiyeon.net/2016/02/10/Jekyll/">Jekyll</a></h2>
+    <h2><a href="http://blog.kiyeon.net/2015/06/04/linux-package-management/">리눅스 패키지 관리(Linux Package Management)</a></h2>
 
     <div class="post-meta">
 
   <div>
     <i class="fa fa-calendar fa-fw"></i>
-    <time>10 Feb 2016, 14:28</time>
+    <time>04 Jun 2015, 10:01</time>
   </div>
 
   
@@ -228,8 +228,9 @@
   </header>
 
   <p>
-  Link
- Jekyll Wiki  Themes  지킬로 만들어진 사이트 jekyllbootstrap.com jekyllthemes.org  
+   리눅스에서 프로그램을 설치하는 방법은 2가지가 있는데 소스코드를 직접 컴파일하여 설치하는 방법과 각 배포판에서 제공하는 패키지 매니저를 통해 설치하는 방법이다.
+Debian APT 데비안에서는 APT(Advanced Packaging Tool)을 사용한다. APT User&rsquo;s Guide
+ apt apt-get apt-cache search {package-name} aptitude dpkg  References  Debian Linux apt-get package management cheat sheet APT and Dpkg Quick Reference Sheet Chapter 2. Debian package management  
   </p>
 
   
@@ -238,13 +239,13 @@
   
     <article>
   <header>
-    <h2><a href="http://blog.kiyeon.net/2015/12/04/installing-linux-package/">리눅스 패키지 설치하기</a></h2>
+    <h2><a href="http://blog.kiyeon.net/2015/05/26/octopress-and-start/">Octopress &amp;amp; Start</a></h2>
 
     <div class="post-meta">
 
   <div>
     <i class="fa fa-calendar fa-fw"></i>
-    <time>04 Dec 2015, 14:55</time>
+    <time>26 May 2015, 20:39</time>
   </div>
 
   
@@ -258,115 +259,17 @@
   </header>
 
   <p>
-  Ubuntu 기본 Something along the lines of: dpkg &ndash;&gt; apt-get, aptitude &ndash;&gt; Synaptic, Software Center http://askubuntu.com/a/40781
-최신 버전 설치  최신 패키지 검색
-Ubuntu package building and hosting에서 최신 패키지를 검색한다. Binary packages built by this source에서 설치할 Binary package를 선택한다. Published versions에서 시스템에 맞는 버전을 선택한다.
-ex) sqlite3 3.9.2-1(amd64 binary) in ubuntu xenial Downloadable files에서 deb파일을 다운로드 한다.
-wget http://launchpadlibrarian.net/225502540/sqlite3_3.9.2-1_amd64.deb 다운로드한 deb을 설치한다.
-sudo dpkg -i sqlite3_3.9.2-1_amd64.deb 의존성 관련 패키지가 필요하면 Package relationships에서 deb을 받아 설치한다.
+  <h2 id="intro">Intro</h2>
+
+<p>세상에는 매우 다양한 CMS<sup class="footnote-ref" id="fnref:cms"><a rel="footnote" href="#fn:cms">1</a></sup>가 있다.<br />
+인터넷이 국내에 막 대중에게 보급되기 시작한 1999년부터 지금(2015년)까지 블로깅을 하기위해 다양한 시도를 해봤다. 정적페이지에 직접 C로 작성한 CGI를 이용해 방명록과 게시판을 달아보기도 했고<sup class="footnote-ref" id="fnref:cgi"><a rel="footnote" href="#fn:cgi">2</a></sup> PHP로 사용자인증을 적용한 게시판을 만들어 사용해보기도 했다.  당시엔 직접만들어 쓰거나 아니면 누군가 만들어 놓은 CMS를 이용하기도 했는데 그땐 그런 툴이 몇 안되었기 때문에 선택이 쉬웠다. 사용하는 언어도 C, PHP, JAVA, JSP정도였고 DB도 Oracle아니면 MySQL정도였다.  운동도 보는것보다는 직접하는걸 더 좋아하는데 이런 성향은 개발에서도 나타난다. 누군가 만든걸 가져다 쓰는것보다는 직접 만들어 쓰는걸 더 선호한다.<sup class="footnote-ref" id="fnref:preference"><a rel="footnote" href="#fn:preference">3</a></sup>
+
+어쨋거나&hellip; 컨텐츠보다는 프레임에 더 집착하다보니 유행과 관심사에 따라 뒤엎기를 반복하여 제대로 운영되는 블로그 하나 제대로 없다.</p>
   </p>
 
   
   <footer>
-    <a href="http://blog.kiyeon.net/2015/12/04/installing-linux-package/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
-  </footer>
-  
-</article>
-
-  
-    <article>
-  <header>
-    <h2><a href="http://blog.kiyeon.net/2015/12/02/ocr/">OCR</a></h2>
-
-    <div class="post-meta">
-
-  <div>
-    <i class="fa fa-calendar fa-fw"></i>
-    <time>02 Dec 2015, 10:18</time>
-  </div>
-
-  
-
-  
-
-  
-
-</div>
-
-  </header>
-
-  <p>
-   광학 문자 인식(Optical character recognition; OCR)
-Software  ABBYY FineReader - 문자 인식(OCR) 책 스캔 프로그램 추천 : 한글 영문 인식률 결과  Online OCR services  WeOCR CustomOCR Free OCR i2OCR  Open source  Tesseract - Tesseract Open Source OCR Engine (main repository)  3rdParty   
-  </p>
-
-  
-</article>
-
-  
-    <article>
-  <header>
-    <h2><a href="http://blog.kiyeon.net/2015/11/28/adding-and-expending-aws-EBS/">AWS EBS 확장및 추가하기</a></h2>
-
-    <div class="post-meta">
-
-  <div>
-    <i class="fa fa-calendar fa-fw"></i>
-    <time>28 Nov 2015, 18:40</time>
-  </div>
-
-  
-
-  
-
-  
-
-</div>
-
-  </header>
-
-  <p>
-  AWS EC2의 디스크가 Full이 되어 확장이 필요했다.
-볼륨 확장 Linux에서 EBS 볼륨의 스토리지 공간 확장
- 인스턴스를 Stop 시킨다. EBS Volume을 찾아 Snapshopt을 만든다. (복사용) Snapshot에서 2에서 만든 스냅샷을 선택하여 새로운 볼륨을 만든다. 여기서 확장할 사이즈를 정한다. ex) 8GB -&gt; 15GB, 볼륨이 커지면 비용이 발생하므로 SIMPLE MONTHLY CALCULATOR로 요금을 계산하자. 이전 볼륨을 분리(Detach Volume)하고 새로 만든 볼륨을 연결(Attach Volume)한다. 인스턴스를 다시 시작한다. 파일 시스템을 확장한다. 여기서부터는 Linux 파일 시스템 확장참조  볼륨 추가 인스턴스에 볼륨 추가
-  </p>
-
-  
-  <footer>
-    <a href="http://blog.kiyeon.net/2015/11/28/adding-and-expending-aws-EBS/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
-  </footer>
-  
-</article>
-
-  
-    <article>
-  <header>
-    <h2><a href="http://blog.kiyeon.net/2015/11/28/lisp/">LISP</a></h2>
-
-    <div class="post-meta">
-
-  <div>
-    <i class="fa fa-calendar fa-fw"></i>
-    <time>28 Nov 2015, 01:51</time>
-  </div>
-
-  
-
-  
-
-  
-
-</div>
-
-  </header>
-
-  <p>
-  LISP  표현 기능이 대단히 뛰어난 언어, 가장 복잡한 프로그래밍 아이디어를 명확하고 적절하게 표현할 수 있도록 설계. 많은 대기업이 핵심적인 업무에 리스프를 사용. 리스프는 작은 노력으로도 배울 수 있지만 컴퓨터 프로그래밍에 대해 깊은 통찰력을 갖게 한다. 확장성 있는 라이브러리를 비롯한 수많은 언어 기능을 지원하며 컴파일러/인터프리터를 무척 쉽게 수정할 수 있다. 리스프의 주된 원리를 따르는 모든 언어는 리스프의 변종이라 하고 그래서 리스프는 변종이 많다. 가장 많이 사용하는 리스프는 안시 커먼 리스프와 스킴 안시 커먼 리스프  1981년 많은 리스프 변종에 대응하고자 리스프 단체에서 커먼 리스프라는 리스프 명세서를 발표.
-  </p>
-
-  
-  <footer>
-    <a href="http://blog.kiyeon.net/2015/11/28/lisp/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
+    <a href="http://blog.kiyeon.net/2015/05/26/octopress-and-start/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
   </footer>
   
 </article>
@@ -378,11 +281,11 @@ Software  ABBYY FineReader - 문자 인식(OCR) 책 스캔 프로그램 추천 :
 
 <nav class="pagination" role="pagination">
   
-  <i class="fa fa-chevron-left"></i>
+  <a href="http://blog.kiyeon.net/page/3/"><i class="fa fa-chevron-left"></i></a>
   
-  <span>&nbsp;1 / 4&nbsp;</span>
+  <span>&nbsp;4 / 4&nbsp;</span>
   
-  <a href="http://blog.kiyeon.net/page/2/"><i class="fa fa-chevron-right"></i></a>
+  <i class="fa fa-chevron-right"></i>
   
 </nav>
 
