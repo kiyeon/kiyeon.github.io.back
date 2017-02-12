@@ -5,7 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <title>Etc  &middot; Kiyeon&#39;s Blog</title>
+  <title>리눅스 패키지 설치하기  &middot; Kiyeon&#39;s Blog</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="HandheldFriendly" content="True">
 <meta name="MobileOptimized" content="320">
@@ -17,19 +17,47 @@
 <meta name="keywords" content="">
 
 
-<meta property="og:title" content="Etc  &middot; Kiyeon&#39;s Blog ">
+<meta property="og:title" content="리눅스 패키지 설치하기  &middot; Kiyeon&#39;s Blog ">
 <meta property="og:site_name" content="Kiyeon&#39;s Blog"/>
-<meta property="og:url" content="http://blog.kiyeon.net/categories/etc/" />
+<meta property="og:url" content="http://blog.kiyeon.net/2015/12/04/installing-linux-package/" />
 <meta property="og:locale" content="ko-kr">
 
 
-<meta property="og:type" content="website" />
+<meta property="og:type" content="article" />
+<meta property="og:description" content=""/>
+<meta property="og:article:published_time" content="2015-12-04T14:55:00Z" />
+<meta property="og:article:modified_time" content="2015-12-04T14:55:00Z" />
+
+  
+
+  
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@" />
+<meta name="twitter:creator" content="@" />
+<meta name="twitter:title" content="리눅스 패키지 설치하기" />
+<meta name="twitter:description" content="" />
+<meta name="twitter:url" content="http://blog.kiyeon.net/2015/12/04/installing-linux-package/" />
+<meta name="twitter:domain" content="http://blog.kiyeon.net">
+  
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "headline": "리눅스 패키지 설치하기",
+    "author": {
+      "@type": "Person",
+      "name": "http://profiles.google.com/+?rel=author"
+    },
+    "datePublished": "2015-12-04",
+    "description": "",
+    "wordCount":  108 
+  }
+</script>
 
 
 
-<link href="http://blog.kiyeon.net/categories/etc/index.xml" rel="alternate" type="application/rss+xml" title="Etc" />
-
-<link rel="canonical" href="http://blog.kiyeon.net/categories/etc/" />
+<link rel="canonical" href="http://blog.kiyeon.net/2015/12/04/installing-linux-package/" />
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
 <link rel="icon" href="/favicon.png">
 <meta name="generator" content="Hugo 0.18.1" />
@@ -82,22 +110,111 @@
   </header>
 
 
-<div id="main-content" class="container">
-  <header>
-    <h1>Etc
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+  <div class="text-center">
+
+    <h1>리눅스 패키지 설치하기
 </h1>
 
-  </header>
-  <ul class="container content">
-    
-      <li><a href="http://blog.kiyeon.net/2015/11/10/testing-and-making-multi-booting-usb/">Making &amp; Testing Multiboot USB</a>
+    <div class="metas">
+<small>
+  <i class="fa fa-calendar"></i>
+  <time datetime="2015-12-04">4 Dec, 2015</time>
+</small>
 
-</li>
 
-    
-  </ul>
+  <small>
+  &middot; Read in about 1 min
+  &middot; (108 words)
+</small>
+
+
+<div class="margin-10">
+
+</div>
+<br>
+</div>
+
+  </div>
+</div>
+
+      <div class="content">
   
 
+<h2 id="ubuntu">Ubuntu</h2>
+
+<h3 id="기본">기본</h3>
+
+<p>Something along the lines of:
+dpkg &ndash;&gt; apt-get, aptitude &ndash;&gt; Synaptic, Software Center
+<a href="http://askubuntu.com/a/40781">http://askubuntu.com/a/40781</a></p>
+
+<h3 id="최신-버전-설치">최신 버전 설치</h3>
+
+<ol>
+<li>최신 패키지 검색<br />
+<a href="https://launchpad.net/ubuntu">Ubuntu package building and hosting</a>에서 최신 패키지를 검색한다.</li>
+<li><strong>Binary packages built by this source</strong>에서 설치할 Binary package를 선택한다.</li>
+<li><strong>Published versions</strong>에서 시스템에 맞는 버전을 선택한다.<br />
+ex) <a href="https://launchpad.net/ubuntu/xenial/amd64/sqlite3/3.9.2-1">sqlite3 3.9.2-1(amd64 binary) in ubuntu xenial</a></li>
+<li><strong>Downloadable files</strong>에서 deb파일을 다운로드 한다.<br />
+<code>wget http://launchpadlibrarian.net/225502540/sqlite3_3.9.2-1_amd64.deb</code></li>
+<li>다운로드한 deb을 설치한다.<br />
+<code>sudo dpkg -i sqlite3_3.9.2-1_amd64.deb</code></li>
+<li>의존성 관련 패키지가 필요하면 <strong>Package relationships</strong>에서 deb을 받아 설치한다.</li>
+<li>설치 완료한 패키지를 실행해본다.<br />
+
+% sqlite3
+SQLite version 3.9.2 2015-11-02 18:31:45
+Enter ".help" for usage hints.
+Connected to a transient in-memory database.
+Use ".open FILENAME" to reopen on a persistent database.
+sqlite>
+</li>
+</ol>
+
+</div>
+
+
+      <footer>
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      
+  
+    <nav><ul class="pager">
+    
+        <li class="previous">
+          <a href="http://blog.kiyeon.net/2015/12/02/ocr/" title="OCR">
+            <span aria-hidden="true">&larr;</span>Previous
+          </a>
+        </li>
+    
+
+    
+      <li class="next">
+        <a href="http://blog.kiyeon.net/2016/02/10/Jekyll/" title="Jekyll">
+            Next <span aria-hidden="true">&rarr;</span>
+        </a>
+      </li>
+    
+    </ul> </nav>
+  
+
+
+</div>
+
+  <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
+  
+
+</div>
+
+</footer>
+
+    </div>
+    
+  </div>
 </div>
       
 <footer class="footer hidden-print">

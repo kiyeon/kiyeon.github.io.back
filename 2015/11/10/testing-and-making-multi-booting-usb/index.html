@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Making &amp; Testing Multiboot USB  &middot; Kiyeon&#39;s Blog</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="description" content="" />
+
+<meta name="keywords" content="">
+
+
+<meta property="og:title" content="Making &amp; Testing Multiboot USB  &middot; Kiyeon&#39;s Blog ">
+<meta property="og:site_name" content="Kiyeon&#39;s Blog"/>
+<meta property="og:url" content="http://blog.kiyeon.net/2015/11/10/testing-and-making-multi-booting-usb/" />
+<meta property="og:locale" content="ko-kr">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content=""/>
+<meta property="og:article:published_time" content="2015-11-10T23:56:57Z" />
+<meta property="og:article:modified_time" content="2015-11-10T23:56:57Z" />
+
+  
+
+  
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@" />
+<meta name="twitter:creator" content="@" />
+<meta name="twitter:title" content="Making &amp; Testing Multiboot USB" />
+<meta name="twitter:description" content="" />
+<meta name="twitter:url" content="http://blog.kiyeon.net/2015/11/10/testing-and-making-multi-booting-usb/" />
+<meta name="twitter:domain" content="http://blog.kiyeon.net">
+  
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "headline": "Making \x26 Testing Multiboot USB",
+    "author": {
+      "@type": "Person",
+      "name": "http://profiles.google.com/+?rel=author"
+    },
+    "datePublished": "2015-11-10",
+    "description": "",
+    "wordCount":  606 
+  }
+</script>
+
+
+
+<link rel="canonical" href="http://blog.kiyeon.net/2015/11/10/testing-and-making-multi-booting-usb/" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
+<link rel="icon" href="/favicon.png">
+<meta name="generator" content="Hugo 0.18.1" />
+
+  <!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+
+
+    <link rel="stylesheet" href="http://blog.kiyeon.net/css/bootswatch/default/bootstrap.min.css">
+
+
+<link rel="stylesheet" href="http://blog.kiyeon.net/css/font-awesome.min.css">
+<link rel="stylesheet" href="http://blog.kiyeon.net/css/style.css">
+
+
+  <link rel="stylesheet" href="http://blog.kiyeon.net/css/highlight/default.css">
+
+
+</head>
+<body data-ng-app="myapp" data-ng-controller="MyController" data-ng-mouseleave="MouseLeave($event)">
+    <header id="main-header">
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        
+          
+          <a class="navbar-brand-img" href="/">
+            <img alt="" src="">
+            
+          </a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            
+            
+          </ul>
+        </div>
+        
+      </div>
+    </nav>
+  </header>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+  <div class="text-center">
+
+    <h1>Making &amp; Testing Multiboot USB
+</h1>
+
+    <div class="metas">
+<small>
+  <i class="fa fa-calendar"></i>
+  <time datetime="2015-11-10">10 Nov, 2015</time>
+</small>
+
+
+  <small>
+  &middot; Read in about 3 min
+  &middot; (606 words)
+</small>
+
+
+<div class="margin-10">
+
+</div>
+<br>
+</div>
+
+  </div>
+</div>
+
+      <div class="content">
+  
+
+<h2 id="개요">개요</h2>
+
+<p>요즘은 그렇지 않지만 예전에는 뭔가 OS를 설치할일이 많았다. 특히 Windows는 정기적으로 설치해야하는 일이 빈번했다.</p>
+
+<p>Windows외에 테스트용 리눅스 서버나 복원용 툴, 고스트, 네트워크 모니터링을 위한 백트랙등 가끔씩 설치할일이 있는데 아무래도 USB로 설치하는게 간편하다. 원래는 부트영역에 한번에 하나만 설치가 가능하고 그래서 OS별로 USB를 준비하던가 그때마다 USB를 포맷하고 새로 설치하는 번거로움이 있다.  이번에 <a href="https://en.wikipedia.org/wiki/Multi-level_cell">MLC</a> 대용량 USB를 구입하면서 남는 용량이 아깝기도 하고 간혹가다 설치를 해줘야할 때도 있고해서 <a href="https://en.wikipedia.org/wiki/Multiboot_Specification">멀티부트</a> USB를 만들기로 했다.</p>
+
+<h2 id="준비물">준비물</h2>
+
+<ul>
+<li>USB</li>
+<li><a href="http://www.pendrivelinux.com/yumi-multiboot-usb-creator/">YUMI</a></li>
+<li>OS <a href="https://en.wikipedia.org/wiki/ISO_image">Image</a> File</li>
+<li><a href="https://en.wikipedia.org/wiki/Virtual_machine">가상머신 Tools</a>(<a href="http://www.vmware.com/kr">VMware</a>,  <a href="http://www.parallels.com/kr/">Parallels</a>, <a href="https://www.virtualbox.org/">Virtual Box</a> &hellip;)</li>
+<li><a href="https://www.plop.at/en/bootmanager/download.html">Plop Boot Manager</a></li>
+</ul>
+
+<h2 id="멀티부트-usb-만들기">멀티부트 USB 만들기</h2>
+
+<p>멀티부트 디스크를 만드는 방법은 두가지가 있는데 첫번째는 직접 부트영역을 뜯어고치는 방법과(MBR, GRUB), 멀티부트를 만들어주는 유틸리티를 사용하는 것이다. 당연히 두번째 방법으로 만들것이고, YUMI<sup class="footnote-ref" id="fnref:1"><a rel="footnote" href="#fn:1">1</a></sup>를 사용할 것이다.</p>
+
+<h3 id="1-format">1. Format</h3>
+
+<p>USB 부팅은 BIOS에서 지원을 해줘야 하며 BIOS에서 읽을 수 있는 File System으로 포맷을 해야한다. FAT32나 NTFS 두가지를 지원하므로 둘중 하나를 선택해서 USB를 포맷한다.<sup class="footnote-ref" id="fnref:2"><a rel="footnote" href="#fn:2">2</a></sup></p>
+
+<p>두 파일 시스템에 장단점이 있는데&hellip; FAT32은 거의 모든 시스템에서 지원하기 때문에 호환성이 좋고 그래서 USB의 성능이 잘 나온다. 하지만 파일당 최고 4GB용량 제한이 있다. NTFS는 파일당 최고 16EB로 사실상 제한이 없긴 하나 호환성이 극히 나쁘다. Windows를 제외한 대부분의 시스템에서 이 파일시스템을 지원하지 않는다.<sup class="footnote-ref" id="fnref:3"><a rel="footnote" href="#fn:3">3</a></sup></p>
+
+<p>타 시스템에서 NTFS를 사용하려면 <a href="http://www.tuxera.com/community/open-source-ntfs-3g/">ntfs-3g</a>나 <a href="https://www.paragon-software.com/home/ntfs-mac/">Paragon NTFS</a>를 설치하면 사용할 수 있다.</p>
+
+<p>ntfs-3g는 무료지만 업데이트가 중단되었는지 제역할을 하지 못한다. 읽기,쓰기 속도를 측정(<a href="https://itunes.apple.com/kr/app/blackmagic-disk-speed-test/id425264550?mt=12">Disk Speed Test</a>)해보면 <code>Write 3 MB/s, Read 20 MB/s</code>가 나온다.</p>
+
+<p>Paragon NTFS는 유료지만 제대로 속도가 나온다. <code>Write 120 MB/s, Read 200 MB/s</code></p>
+
+<p>모두 OS X에서 측정했으며 몇가지 더 테스트 해봤다.</p>
+
+<ul>
+<li>FAT32 : <code>Write 114 MB/s, Read 202.5 MB/s</code></li>
+<li><a href="https://en.wikipedia.org/wiki/JFS_(file_system)">JFS</a> : <code>Write 130 MB/s, Read 200 MB/s</code>, OS X에서 사용하는 파일 시스템으로 윈도우에서는 인식하지 못한다.</li>
+<li>ExFAT : <code>Write 100 MB/s, Read 180 MB/s</code></li>
+</ul>
+
+<p>참고로 백업용으로 USB를 사용하려면 4k 쓰기 속도가 좋아야 하는데 내껀 4k쓰기 속도가 거의 0이였다. 조금 좌절했지만 특이한건 JFS나 Ext4를 사용하면 4k 쓰기 속도와 상관없이 엄청난 성능을 발휘한다. NTFS에서는 프리징이 발생한다.(아 MS &hellip;)</p>
+
+<h3 id="2-yumi">2. <a href="http://www.pendrivelinux.com/yumi-multiboot-usb-creator/">YUMI</a></h3>
+
+<p><a href="http://www.pendrivelinux.com/yumi-multiboot-usb-creator/">YUMI</a>는 인터페이스가 직관적이여서 사용하기가 쉽다. USB를 선택하고 설치할 OS를 선택하고 Image를 지정하면 바로 설치가 되고 이어서 설치를 하면 멀티부트가 자동으로 만들어진다.<sup class="footnote-ref" id="fnref:4"><a rel="footnote" href="#fn:4">4</a></sup></p>
+
+<h2 id="test">Test</h2>
+
+<p>멀티부트 USB가 잘만들어졌는지 테스트 해보자.</p>
+
+<h3 id="pc에서-테스트">PC에서 테스트</h3>
+
+<ol>
+<li>PC에 USB를 꼽는다.(USB 3.0포트에서 인식이 안될 수도 있으니 2.0에서도 해본다)</li>
+<li>파워를 켜고 BIOS나 부트선택메뉴에서 USB를 선택한다.(모델별로 진입키가 다르다. 처음 부팅시 화면에 나오므로 잘보고 키를 누른다)</li>
+<li>멀티부트 메뉴가 나온다면 성공.</li>
+</ol>
+
+<h3 id="가상머신에서-테스트">가상머신에서 테스트</h3>
+
+<p>나는 VMWare를 사용하는데 예전에는 일반PC처럼 부팅시 진입키로 USB를 선택할 수 있었는데 그 메뉴가 사라져서 다른 방법을 사용해야 한다.</p>
+
+<p><a href="https://www.plop.at/en/bootmanager/download.html">Plop Boot Manager</a>를 다운받아 압축을 해제하면 <code>plpbt.iso</code>가 있다. VMWare CD-ROM에서 이녀석을 선택하고 부트오더에서 CD-ROM을 최상단에 둔다.<sup class="footnote-ref" id="fnref:6"><a rel="footnote" href="#fn:6">5</a></sup></p>
+
+<p>전원을 켜면 <code>Plop Boot Manager</code>가 실행되고 여기서 <code>USB</code>를 선택하면 USB로 부팅이 된다. USB3.0 포트는 인식을 못한다.(VMware가 못하는건지 Plop이 못하는건지는 모르겠다&hellip;) 2.0포트를 사용해야 한다.</p>
+
+<h2 id="references">References</h2>
+
+<ul>
+<li><a href="http://web.archive.org/web/20040407211142/aurora.zemris.fer.hr/filesystems/">Test of six linux filesystems ext2, ext3, jfs, reiserfs, vfat, xfs on linux 2.4.5</a></li>
+<li><a href="http://www.howtogeek.com/73178/what-file-system-should-i-use-for-my-usb-drive/">What File System Should I Use for My USB Drive?</a></li>
+<li><a href="https://support.microsoft.com/ko-kr/kb/140365">NTFS, FAT와 exFAT에 대 한 기본 클러스터 크기</a></li>
+</ul>
+
+<h2 id="결론">결론</h2>
+
+<p>멀티부트 USB 만드는거 참 쉬운데 내가 사용하는 환경이 OS X다 보니 알아볼게 많았다. 파일 시스템 호환과 장단점 USB 메모리 타입과 성능및 속도, 가상머신 테스트 방법&hellip; 참 별거 아닌거 같으면서도 가장 기초적인 부분까지 파고 들 수 있어서 재미있었던거 같다. 이 과정에서 128GB USB를 날렸다. ㅠㅠ 28만개 파일을 백업했는데 바로 인식 불가&hellip;</p>
+
+<p>참고로</p>
+
+<ul>
+<li>FAT32와 NTFS의 클러스터 크기에 따라 속도와 효율이 달라진다. 클러스터 크기가 낮으면 저장공간을 아낄 수 있지만 속도가 느려진다. 클러스터 크기가 높으면 속도는 빠른대신 저장공간 낭비가 많아진다.</li>
+<li>우분투를 처음 설치했을때 root 패스워드는 없는 상태이다. <code>sudo passwd root</code>를 하여 root 패스워드를 지정할 수 있다. 또는 그냥 <code>sudo &lt;command&gt;</code>를 하면 루트권한으로 커맨드가 실행된다.<sup class="footnote-ref" id="fnref:5"><a rel="footnote" href="#fn:5">6</a></sup></li>
+</ul>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:1">YUMI말고도 다양한 툴들(<a href="https://en.wikipedia.org/wiki/List_of_tools_to_create_Live_USB_systems">List of tools to create Live USB systems</a>)이 있다.
+ <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
+<li id="fn:2">정확하지는 않다. 경험으로 알게된건데 찾기 귀찮아서&hellip; &ndash;;
+ <a class="footnote-return" href="#fnref:2"><sup>[return]</sup></a></li>
+<li id="fn:3"><a href="https://en.wikipedia.org/wiki/Comparison_of_file_systems">Comparison of file systems</a>
+ <a class="footnote-return" href="#fnref:3"><sup>[return]</sup></a></li>
+<li id="fn:4"><a href="http://massukr.tistory.com/155">USB 메모리 하나로 여러 운영체제 설치 - YUMI</a>
+ <a class="footnote-return" href="#fnref:4"><sup>[return]</sup></a></li>
+<li id="fn:6"><a href="http://prolite.tistory.com/165">VMware USB 부팅 하기&hellip; 첫번째 방법&hellip;</a>, <a href="http://prolite.tistory.com/166">VMware USB 부팅 하기&hellip; 두번째 방법&hellip;</a>
+ <a class="footnote-return" href="#fnref:6"><sup>[return]</sup></a></li>
+<li id="fn:5"><a href="http://askubuntu.com/a/434956">What is the default root password when was never set at installation time?</a>
+ <a class="footnote-return" href="#fnref:5"><sup>[return]</sup></a></li>
+</ol>
+</div>
+
+</div>
+
+
+      <footer>
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      
+  
+    <nav><ul class="pager">
+    
+        <li class="previous">
+          <a href="http://blog.kiyeon.net/2015/06/25/command-lineeseo-java-jagseonghago-silhaenghagi/" title="Command line에서 java 작성하고 실행하기">
+            <span aria-hidden="true">&larr;</span>Previous
+          </a>
+        </li>
+    
+
+    
+      <li class="next">
+        <a href="http://blog.kiyeon.net/2015/11/28/lisp/" title="LISP">
+            Next <span aria-hidden="true">&rarr;</span>
+        </a>
+      </li>
+    
+    </ul> </nav>
+  
+
+
+</div>
+
+  <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
+  
+
+</div>
+
+</footer>
+
+    </div>
+    
+  </div>
+</div>
+      
+<footer class="footer hidden-print">
+  <div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+           <div class="pull-left">
+  <a class="toplink" href="javascript:" id="return-to-top">back to top</a>
+</div>
+<div class="pull-right">
+
+</div>
+
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+              
+    
+<div class="container footline">
+    <small>
+</small>
+</div>
+
+
+    
+
+
+        </div>
+    </div>
+  </div>
+</footer>
+
+    
+
+<script src="http://blog.kiyeon.net/js/jquery.min.js"></script>
+<script src="http://blog.kiyeon.net/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+<script src="/js/popover/angular-storage.min.js"></script>
+
+
+
+<script src="http://blog.kiyeon.net/js/highlight.pack.js"></script>
+<script src="http://blog.kiyeon.net/js/site.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+var ENABLE_POPOVER = ""; 
+var EXPIRE_COOKIE = ""; 
+var SHOW_MODAL_TIMEOUT = ""; 
+var MOUSE_LEAVE = ""; 
+var MODAL_SIZE = ""; 
+var POST_URL = ""; 
+var SIGNUP_HEADER = "";
+var HEADER_IMAGE = "";
+var IMG_DESCRIPTION = "";
+var SIGNUP_TEXT = "";
+var INPUT_PLACEHOLDER = "";
+var SUBMIT_BUTTON = "";
+var SUCCESS_MESSAGE = "";
+var ERROR_MESSAGE = "";
+var OPTIN = "";
+var COOKIE_NAME = "";
+</script>
+<script src="/js/popover/angular-modal-service.min.js"></script>
+<script src="/js/angular-ismobile.min.js"></script>
+<script src="/js/popover/popover.min.js"></script>
+
+  </body>
+</html>
+

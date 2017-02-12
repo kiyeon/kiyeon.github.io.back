@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>AWS EBS 확장및 추가하기  &middot; Kiyeon&#39;s Blog</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="description" content="" />
+
+<meta name="keywords" content="">
+
+
+<meta property="og:title" content="AWS EBS 확장및 추가하기  &middot; Kiyeon&#39;s Blog ">
+<meta property="og:site_name" content="Kiyeon&#39;s Blog"/>
+<meta property="og:url" content="http://blog.kiyeon.net/2015/11/28/adding-and-expending-aws-EBS/" />
+<meta property="og:locale" content="ko-kr">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content=""/>
+<meta property="og:article:published_time" content="2015-11-28T18:40:00Z" />
+<meta property="og:article:modified_time" content="2015-11-28T18:40:00Z" />
+
+  
+
+  
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@" />
+<meta name="twitter:creator" content="@" />
+<meta name="twitter:title" content="AWS EBS 확장및 추가하기" />
+<meta name="twitter:description" content="" />
+<meta name="twitter:url" content="http://blog.kiyeon.net/2015/11/28/adding-and-expending-aws-EBS/" />
+<meta name="twitter:domain" content="http://blog.kiyeon.net">
+  
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "headline": "AWS EBS 확장및 추가하기",
+    "author": {
+      "@type": "Person",
+      "name": "http://profiles.google.com/+?rel=author"
+    },
+    "datePublished": "2015-11-28",
+    "description": "",
+    "wordCount":  333 
+  }
+</script>
+
+
+
+<link rel="canonical" href="http://blog.kiyeon.net/2015/11/28/adding-and-expending-aws-EBS/" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
+<link rel="icon" href="/favicon.png">
+<meta name="generator" content="Hugo 0.18.1" />
+
+  <!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+
+
+    <link rel="stylesheet" href="http://blog.kiyeon.net/css/bootswatch/default/bootstrap.min.css">
+
+
+<link rel="stylesheet" href="http://blog.kiyeon.net/css/font-awesome.min.css">
+<link rel="stylesheet" href="http://blog.kiyeon.net/css/style.css">
+
+
+  <link rel="stylesheet" href="http://blog.kiyeon.net/css/highlight/default.css">
+
+
+</head>
+<body data-ng-app="myapp" data-ng-controller="MyController" data-ng-mouseleave="MouseLeave($event)">
+    <header id="main-header">
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        
+          
+          <a class="navbar-brand-img" href="/">
+            <img alt="" src="">
+            
+          </a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            
+            
+          </ul>
+        </div>
+        
+      </div>
+    </nav>
+  </header>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+  <div class="text-center">
+
+    <h1>AWS EBS 확장및 추가하기
+</h1>
+
+    <div class="metas">
+<small>
+  <i class="fa fa-calendar"></i>
+  <time datetime="2015-11-28">28 Nov, 2015</time>
+</small>
+
+
+  <small>
+  &middot; Read in about 2 min
+  &middot; (333 words)
+</small>
+
+
+<div class="margin-10">
+
+</div>
+<br>
+</div>
+
+  </div>
+</div>
+
+      <div class="content">
+  
+
+<p>AWS EC2의 디스크가 Full이 되어 확장이 필요했다.</p>
+
+<h2 id="볼륨-확장">볼륨 확장</h2>
+
+<p><a href="http://docs.aws.amazon.com/ko_kr/AWSEC2/latest/UserGuide/ebs-expand-volume.html">Linux에서 EBS 볼륨의 스토리지 공간 확장</a></p>
+
+<ol>
+<li>인스턴스를 Stop 시킨다.</li>
+<li>EBS Volume을 찾아 Snapshopt을 만든다. (복사용)</li>
+<li>Snapshot에서 2에서 만든 스냅샷을 선택하여 새로운 볼륨을 만든다. 여기서 확장할 사이즈를 정한다. <code>ex) 8GB -&gt; 15GB</code>, 볼륨이 커지면 비용이 발생하므로 <a href="https://calculator.s3.amazonaws.com/index.html">SIMPLE MONTHLY CALCULATOR</a>로 요금을 계산하자.</li>
+<li>이전 볼륨을 분리(Detach Volume)하고 새로 만든 볼륨을 연결(Attach Volume)한다.</li>
+<li>인스턴스를 다시 시작한다.</li>
+<li>파일 시스템을 확장한다. 여기서부터는 <a href="http://docs.aws.amazon.com/ko_kr/AWSEC2/latest/UserGuide/ebs-expand-volume.html#recognize-expanded-volume-linux">Linux 파일 시스템 확장</a>참조</li>
+</ol>
+
+<h2 id="볼륨-추가">볼륨 추가</h2>
+
+<p><a href="http://docs.aws.amazon.com/ko_kr/AWSEC2/latest/UserGuide/ec2-add-volume-to-instance.html">인스턴스에 볼륨 추가</a></p>
+
+<ol>
+<li>추가하려는 인스턴스의 가용 영역(Availability Zone)을 확인한다. 추가 볼륨의 가용 영역이 인스턴스와 같아야 연결할 수 있다.</li>
+<li>EBS메뉴에서 Volumes를 선택하여 새로운 볼륨을 생성한다.(볼륨 유형, 크기, 가용 영역 입력)</li>
+<li>새로 생성된 볼륨을 연결(Attach Volume)한다. 생성한 볼륨의 상태가 <code>available</code>이 되면 인스턴스에 연결 할 수 있다.</li>
+<li>인스턴스에 접속하여 볼륨을 연결한다.
+
+<ul>
+<li><code>lsblk</code> or <code>sudo fdisk -l | grep Disk</code>로 연결된 볼륨을 확인 할 수 있다. (<code>blkid</code>로 UUID와 File system을 확인 할 수 있다.)</li>
+<li>새 볼륨을 사용하려면 포맷을 해야한다. <code>sudo mkfs -t ext4 /dev/xvdf</code>로 포맷.</li>
+<li>포맷된 디바이스를 mount로 연결한다. <code>sudo mkdir /mnt/my-data</code>, <code>sudo mount /dev/xvdf /mnt/my-data</code></li>
+</ul></li>
+</ol>
+
+<h3 id="볼륨-추가-후-fstab-설정">볼륨 추가 후 fstab 설정</h3>
+
+<p>부팅 될때마다 mount를 유지하려면 <code>/etc/fstab</code>에 마운트 정보를 기록해야 한다.</p>
+
+<p><code>fstab</code>은 리눅스가 부팅될 때마다 자동으로 읽는 중요한 파일이므로 수정 시에 주의가 필요하다. 글자가 틀릴 경우 부팅 자체가 아예 안될 수 있다.</p>
+
+<p>fstab에는 6개의 필드가 있다.
+
+# 장치이름     마운트될 디렉토리  파일 시스템 속성       dump 사용 여부  파일 시스템 체크 여부
+/dev/sdb1    /home/mydata   ext3     defaults   0             1
+</p>
+
+<ol>
+<li>device : 장치명이 들어간다. UUID나 Lable등이 사용가능하다. <code>blkid</code>로 확인.</li>
+<li>mount point</li>
+<li>fstype</li>
+<li>options : defaults로 설정하면 읽기/쓰기/실행 등의 작업이 대부분 가능하다.</li>
+<li>dump : 1로 설정하면 리눅스 dump명령으로 백업이 가능하다.</li>
+<li>fsck : 부팅시 이 파티션을 체크하는데 1인 파일 시스템을 먼저 체크하고 2는 1을 체크한 후에 체크한다. 0은 체크를 생략하며 그로인해 부팅속도가 향상된다.</li>
+</ol>
+
+<h2 id="etc">Etc</h2>
+
+<ul>
+<li>현재 디스크의 파일 시스템을 확인하고 싶다면 <code>df -T</code> 또는 <code>blkid</code>를 입력한다.<sup class="footnote-ref" id="fnref:1"><a rel="footnote" href="#fn:1">1</a></sup></li>
+<li>Ubuntu에 접속할때 <code>*** /dev/xvda1 should be checked for errors ***</code>가 나온다면&hellip; 디스크체크<sup class="footnote-ref" id="fnref:2"><a rel="footnote" href="#fn:2">2</a></sup>
+
+<ul>
+<li><code>sudo vi /etc/default/rcS</code></li>
+<li><code>#FSCKFIX=no</code>를 주석처리하고 <code>FSCKFIX=yes</code>를 추가 (automatically repair filesystems with inconsistencies during boot)</li>
+<li><code>sudo touch /forcefsck</code></li>
+<li>reboot</li>
+<li>리부팅후 <code>/forcefsck</code>는 없어진다.</li>
+<li><code>FSCKFIX=yes</code>를 제거한다.</li>
+</ul></li>
+</ul>
+
+<h2 id="references">References</h2>
+
+<ul>
+<li><a href="https://aws.amazon.com/ko/">Amazon Web Services</a></li>
+<li><a href="Amazon Elastic Compute Cloud 설명서">Amazon Elastic Compute Cloud 설명서</a></li>
+</ul>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:1"><a href="https://kldp.org/node/93119">https://kldp.org/node/93119</a>
+ <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
+<li id="fn:2"><a href="http://serverfault.com/a/679051">http://serverfault.com/a/679051</a>
+ <a class="footnote-return" href="#fnref:2"><sup>[return]</sup></a></li>
+</ol>
+</div>
+
+</div>
+
+
+      <footer>
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      
+  
+    <nav><ul class="pager">
+    
+        <li class="previous">
+          <a href="http://blog.kiyeon.net/2015/11/28/lisp/" title="LISP">
+            <span aria-hidden="true">&larr;</span>Previous
+          </a>
+        </li>
+    
+
+    
+      <li class="next">
+        <a href="http://blog.kiyeon.net/2015/12/02/ocr/" title="OCR">
+            Next <span aria-hidden="true">&rarr;</span>
+        </a>
+      </li>
+    
+    </ul> </nav>
+  
+
+
+</div>
+
+  <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
+  
+
+</div>
+
+</footer>
+
+    </div>
+    
+  </div>
+</div>
+      
+<footer class="footer hidden-print">
+  <div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+           <div class="pull-left">
+  <a class="toplink" href="javascript:" id="return-to-top">back to top</a>
+</div>
+<div class="pull-right">
+
+</div>
+
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+              
+    
+<div class="container footline">
+    <small>
+</small>
+</div>
+
+
+    
+
+
+        </div>
+    </div>
+  </div>
+</footer>
+
+    
+
+<script src="http://blog.kiyeon.net/js/jquery.min.js"></script>
+<script src="http://blog.kiyeon.net/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+<script src="/js/popover/angular-storage.min.js"></script>
+
+
+
+<script src="http://blog.kiyeon.net/js/highlight.pack.js"></script>
+<script src="http://blog.kiyeon.net/js/site.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+var ENABLE_POPOVER = ""; 
+var EXPIRE_COOKIE = ""; 
+var SHOW_MODAL_TIMEOUT = ""; 
+var MOUSE_LEAVE = ""; 
+var MODAL_SIZE = ""; 
+var POST_URL = ""; 
+var SIGNUP_HEADER = "";
+var HEADER_IMAGE = "";
+var IMG_DESCRIPTION = "";
+var SIGNUP_TEXT = "";
+var INPUT_PLACEHOLDER = "";
+var SUBMIT_BUTTON = "";
+var SUCCESS_MESSAGE = "";
+var ERROR_MESSAGE = "";
+var OPTIN = "";
+var COOKIE_NAME = "";
+</script>
+<script src="/js/popover/angular-modal-service.min.js"></script>
+<script src="/js/angular-ismobile.min.js"></script>
+<script src="/js/popover/popover.min.js"></script>
+
+  </body>
+</html>
+

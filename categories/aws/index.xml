@@ -10,10 +10,10 @@
     
     <item>
       <title>AWS EBS 확장및 추가하기</title>
-      <link>http://blog.kiyeon.net/2015/11/28/aws-EBS-%E1%84%92%E1%85%AA%E1%86%A8%E1%84%8C%E1%85%A1%E1%86%BC%E1%84%86%E1%85%B5%E1%86%BE-%E1%84%8E%E1%85%AE%E1%84%80%E1%85%A1%E1%84%92%E1%85%A1%E1%84%80%E1%85%B5/</link>
+      <link>http://blog.kiyeon.net/2015/11/28/adding-and-expending-aws-EBS/</link>
       <pubDate>Sat, 28 Nov 2015 18:40:00 +0000</pubDate>
       
-      <guid>http://blog.kiyeon.net/2015/11/28/aws-EBS-%E1%84%92%E1%85%AA%E1%86%A8%E1%84%8C%E1%85%A1%E1%86%BC%E1%84%86%E1%85%B5%E1%86%BE-%E1%84%8E%E1%85%AE%E1%84%80%E1%85%A1%E1%84%92%E1%85%A1%E1%84%80%E1%85%B5/</guid>
+      <guid>http://blog.kiyeon.net/2015/11/28/adding-and-expending-aws-EBS/</guid>
       <description>
 
 &lt;p&gt;AWS EC2의 디스크가 Full이 되어 확장이 필요했다.&lt;/p&gt;
