@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Vim on Kiyeon&#39;s Blog</title>
-    <link>https://kiyeon.github.io/categories/vim/index.xml</link>
+    <link>http://blog2.kiyeon.net/categories/vim/index.xml</link>
     <description>Recent content in Vim on Kiyeon&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="https://kiyeon.github.io/categories/vim/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://blog2.kiyeon.net/categories/vim/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>VIM</title>
-      <link>https://kiyeon.github.io/2015/06/12/vim/</link>
+      <link>http://blog2.kiyeon.net/2015/06/12/vim/</link>
       <pubDate>Fri, 12 Jun 2015 10:08:44 +0000</pubDate>
       
-      <guid>https://kiyeon.github.io/2015/06/12/vim/</guid>
+      <guid>http://blog2.kiyeon.net/2015/06/12/vim/</guid>
       <description>&lt;p&gt;나는 &lt;a href=&#34;http://www.vim.org&#34;&gt;vim&lt;/a&gt;을 좋아하는데 그 이유는&lt;/p&gt;
 
 &lt;ul&gt;

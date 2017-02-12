@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Octopress on Kiyeon&#39;s Blog</title>
-    <link>https://kiyeon.github.io/categories/octopress/index.xml</link>
+    <link>http://blog2.kiyeon.net/categories/octopress/index.xml</link>
     <description>Recent content in Octopress on Kiyeon&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="https://kiyeon.github.io/categories/octopress/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://blog2.kiyeon.net/categories/octopress/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Octopress &amp;amp; Start</title>
-      <link>https://kiyeon.github.io/2015/05/26/octopress-and-start/</link>
+      <link>http://blog2.kiyeon.net/2015/05/26/octopress-and-start/</link>
       <pubDate>Tue, 26 May 2015 20:39:26 +0000</pubDate>
       
-      <guid>https://kiyeon.github.io/2015/05/26/octopress-and-start/</guid>
+      <guid>http://blog2.kiyeon.net/2015/05/26/octopress-and-start/</guid>
       <description>&lt;h2 id=&#34;intro&#34;&gt;Intro&lt;/h2&gt;
 
 &lt;p&gt;세상에는 매우 다양한 CMS&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:cms&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:cms&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;가 있다.&lt;br /&gt;

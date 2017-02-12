@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Lisp on Kiyeon&#39;s Blog</title>
-    <link>https://kiyeon.github.io/categories/lisp/index.xml</link>
+    <link>http://blog2.kiyeon.net/categories/lisp/index.xml</link>
     <description>Recent content in Lisp on Kiyeon&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="https://kiyeon.github.io/categories/lisp/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://blog2.kiyeon.net/categories/lisp/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>LISP</title>
-      <link>https://kiyeon.github.io/2015/11/28/lisp/</link>
+      <link>http://blog2.kiyeon.net/2015/11/28/lisp/</link>
       <pubDate>Sat, 28 Nov 2015 01:51:00 +0000</pubDate>
       
-      <guid>https://kiyeon.github.io/2015/11/28/lisp/</guid>
+      <guid>http://blog2.kiyeon.net/2015/11/28/lisp/</guid>
       <description>
 
 &lt;h2 id=&#34;lisp-https-ko-wikipedia-org-wiki-eb-a6-ac-ec-8a-a4-ed-94-84&#34;&gt;&lt;a href=&#34;https://ko.wikipedia.org/wiki/%EB%A6%AC%EC%8A%A4%ED%94%84&#34;&gt;LISP&lt;/a&gt;&lt;/h2&gt;
