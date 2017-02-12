@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Etc on My New Hugo Site</title>
+    <link>http://example.org/categories/etc/index.xml</link>
+    <description>Recent content in Etc on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://example.org/categories/etc/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Making &amp; Testing Multiboot USB</title>
+      <link>http://example.org/2015/11/10/%E1%84%86%E1%85%A5%E1%86%AF%E1%84%90%E1%85%B5-%E1%84%87%E1%85%AE%E1%84%90%E1%85%B5%E1%86%BC-usb-%E1%84%8C%E1%85%A6%E1%84%8C%E1%85%A1%E1%86%A8%E1%84%80%E1%85%AA-%E1%84%90%E1%85%A6%E1%84%89%E1%85%B3%E1%84%90%E1%85%B3/</link>
+      <pubDate>Tue, 10 Nov 2015 23:56:57 +0000</pubDate>
+      
+      <guid>http://example.org/2015/11/10/%E1%84%86%E1%85%A5%E1%86%AF%E1%84%90%E1%85%B5-%E1%84%87%E1%85%AE%E1%84%90%E1%85%B5%E1%86%BC-usb-%E1%84%8C%E1%85%A6%E1%84%8C%E1%85%A1%E1%86%A8%E1%84%80%E1%85%AA-%E1%84%90%E1%85%A6%E1%84%89%E1%85%B3%E1%84%90%E1%85%B3/</guid>
+      <description>
+
+&lt;h2 id=&#34;개요&#34;&gt;개요&lt;/h2&gt;
+
+&lt;p&gt;요즘은 그렇지 않지만 예전에는 뭔가 OS를 설치할일이 많았다. 특히 Windows는 정기적으로 설치해야하는 일이 빈번했다.&lt;/p&gt;
+
+&lt;p&gt;Windows외에 테스트용 리눅스 서버나 복원용 툴, 고스트, 네트워크 모니터링을 위한 백트랙등 가끔씩 설치할일이 있는데 아무래도 USB로 설치하는게 간편하다. 원래는 부트영역에 한번에 하나만 설치가 가능하고 그래서 OS별로 USB를 준비하던가 그때마다 USB를 포맷하고 새로 설치하는 번거로움이 있다.  이번에 &lt;a href=&#34;https://en.wikipedia.org/wiki/Multi-level_cell&#34;&gt;MLC&lt;/a&gt; 대용량 USB를 구입하면서 남는 용량이 아깝기도 하고 간혹가다 설치를 해줘야할 때도 있고해서 &lt;a href=&#34;https://en.wikipedia.org/wiki/Multiboot_Specification&#34;&gt;멀티부트&lt;/a&gt; USB를 만들기로 했다.&lt;/p&gt;
+
+&lt;h2 id=&#34;준비물&#34;&gt;준비물&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;USB&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.pendrivelinux.com/yumi-multiboot-usb-creator/&#34;&gt;YUMI&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;OS &lt;a href=&#34;https://en.wikipedia.org/wiki/ISO_image&#34;&gt;Image&lt;/a&gt; File&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Virtual_machine&#34;&gt;가상머신 Tools&lt;/a&gt;(&lt;a href=&#34;http://www.vmware.com/kr&#34;&gt;VMware&lt;/a&gt;,  &lt;a href=&#34;http://www.parallels.com/kr/&#34;&gt;Parallels&lt;/a&gt;, &lt;a href=&#34;https://www.virtualbox.org/&#34;&gt;Virtual Box&lt;/a&gt; &amp;hellip;)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.plop.at/en/bootmanager/download.html&#34;&gt;Plop Boot Manager&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;멀티부트-usb-만들기&#34;&gt;멀티부트 USB 만들기&lt;/h2&gt;
+
+&lt;p&gt;멀티부트 디스크를 만드는 방법은 두가지가 있는데 첫번째는 직접 부트영역을 뜯어고치는 방법과(MBR, GRUB), 멀티부트를 만들어주는 유틸리티를 사용하는 것이다. 당연히 두번째 방법으로 만들것이고, YUMI&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:1&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;를 사용할 것이다.&lt;/p&gt;
+
+&lt;h3 id=&#34;1-format&#34;&gt;1. Format&lt;/h3&gt;
+
+&lt;p&gt;USB 부팅은 BIOS에서 지원을 해줘야 하며 BIOS에서 읽을 수 있는 File System으로 포맷을 해야한다. FAT32나 NTFS 두가지를 지원하므로 둘중 하나를 선택해서 USB를 포맷한다.&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:2&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:2&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;p&gt;두 파일 시스템에 장단점이 있는데&amp;hellip; FAT32은 거의 모든 시스템에서 지원하기 때문에 호환성이 좋고 그래서 USB의 성능이 잘 나온다. 하지만 파일당 최고 4GB용량 제한이 있다. NTFS는 파일당 최고 16EB로 사실상 제한이 없긴 하나 호환성이 극히 나쁘다. Windows를 제외한 대부분의 시스템에서 이 파일시스템을 지원하지 않는다.&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:3&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:3&#34;&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;p&gt;타 시스템에서 NTFS를 사용하려면 &lt;a href=&#34;http://www.tuxera.com/community/open-source-ntfs-3g/&#34;&gt;ntfs-3g&lt;/a&gt;나 &lt;a href=&#34;https://www.paragon-software.com/home/ntfs-mac/&#34;&gt;Paragon NTFS&lt;/a&gt;를 설치하면 사용할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;ntfs-3g는 무료지만 업데이트가 중단되었는지 제역할을 하지 못한다. 읽기,쓰기 속도를 측정(&lt;a href=&#34;https://itunes.apple.com/kr/app/blackmagic-disk-speed-test/id425264550?mt=12&#34;&gt;Disk Speed Test&lt;/a&gt;)해보면 &lt;code&gt;Write 3 MB/s, Read 20 MB/s&lt;/code&gt;가 나온다.&lt;/p&gt;
+
+&lt;p&gt;Paragon NTFS는 유료지만 제대로 속도가 나온다. &lt;code&gt;Write 120 MB/s, Read 200 MB/s&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;모두 OS X에서 측정했으며 몇가지 더 테스트 해봤다.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;FAT32 : &lt;code&gt;Write 114 MB/s, Read 202.5 MB/s&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/JFS_(file_system)&#34;&gt;JFS&lt;/a&gt; : &lt;code&gt;Write 130 MB/s, Read 200 MB/s&lt;/code&gt;, OS X에서 사용하는 파일 시스템으로 윈도우에서는 인식하지 못한다.&lt;/li&gt;
+&lt;li&gt;ExFAT : &lt;code&gt;Write 100 MB/s, Read 180 MB/s&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;참고로 백업용으로 USB를 사용하려면 4k 쓰기 속도가 좋아야 하는데 내껀 4k쓰기 속도가 거의 0이였다. 조금 좌절했지만 특이한건 JFS나 Ext4를 사용하면 4k 쓰기 속도와 상관없이 엄청난 성능을 발휘한다. NTFS에서는 프리징이 발생한다.(아 MS &amp;hellip;)&lt;/p&gt;
+
+&lt;h3 id=&#34;2-yumi&#34;&gt;2. &lt;a href=&#34;http://www.pendrivelinux.com/yumi-multiboot-usb-creator/&#34;&gt;YUMI&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.pendrivelinux.com/yumi-multiboot-usb-creator/&#34;&gt;YUMI&lt;/a&gt;는 인터페이스가 직관적이여서 사용하기가 쉽다. USB를 선택하고 설치할 OS를 선택하고 Image를 지정하면 바로 설치가 되고 이어서 설치를 하면 멀티부트가 자동으로 만들어진다.&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:4&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:4&#34;&gt;4&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;test&#34;&gt;Test&lt;/h2&gt;
+
+&lt;p&gt;멀티부트 USB가 잘만들어졌는지 테스트 해보자.&lt;/p&gt;
+
+&lt;h3 id=&#34;pc에서-테스트&#34;&gt;PC에서 테스트&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;PC에 USB를 꼽는다.(USB 3.0포트에서 인식이 안될 수도 있으니 2.0에서도 해본다)&lt;/li&gt;
+&lt;li&gt;파워를 켜고 BIOS나 부트선택메뉴에서 USB를 선택한다.(모델별로 진입키가 다르다. 처음 부팅시 화면에 나오므로 잘보고 키를 누른다)&lt;/li&gt;
+&lt;li&gt;멀티부트 메뉴가 나온다면 성공.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;가상머신에서-테스트&#34;&gt;가상머신에서 테스트&lt;/h3&gt;
+
+&lt;p&gt;나는 VMWare를 사용하는데 예전에는 일반PC처럼 부팅시 진입키로 USB를 선택할 수 있었는데 그 메뉴가 사라져서 다른 방법을 사용해야 한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.plop.at/en/bootmanager/download.html&#34;&gt;Plop Boot Manager&lt;/a&gt;를 다운받아 압축을 해제하면 &lt;code&gt;plpbt.iso&lt;/code&gt;가 있다. VMWare CD-ROM에서 이녀석을 선택하고 부트오더에서 CD-ROM을 최상단에 둔다.&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:6&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:6&#34;&gt;5&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;p&gt;전원을 켜면 &lt;code&gt;Plop Boot Manager&lt;/code&gt;가 실행되고 여기서 &lt;code&gt;USB&lt;/code&gt;를 선택하면 USB로 부팅이 된다. USB3.0 포트는 인식을 못한다.(VMware가 못하는건지 Plop이 못하는건지는 모르겠다&amp;hellip;) 2.0포트를 사용해야 한다.&lt;/p&gt;
+
+&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://web.archive.org/web/20040407211142/aurora.zemris.fer.hr/filesystems/&#34;&gt;Test of six linux filesystems ext2, ext3, jfs, reiserfs, vfat, xfs on linux 2.4.5&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.howtogeek.com/73178/what-file-system-should-i-use-for-my-usb-drive/&#34;&gt;What File System Should I Use for My USB Drive?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://support.microsoft.com/ko-kr/kb/140365&#34;&gt;NTFS, FAT와 exFAT에 대 한 기본 클러스터 크기&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;결론&#34;&gt;결론&lt;/h2&gt;
+
+&lt;p&gt;멀티부트 USB 만드는거 참 쉬운데 내가 사용하는 환경이 OS X다 보니 알아볼게 많았다. 파일 시스템 호환과 장단점 USB 메모리 타입과 성능및 속도, 가상머신 테스트 방법&amp;hellip; 참 별거 아닌거 같으면서도 가장 기초적인 부분까지 파고 들 수 있어서 재미있었던거 같다. 이 과정에서 128GB USB를 날렸다. ㅠㅠ 28만개 파일을 백업했는데 바로 인식 불가&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;참고로&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;FAT32와 NTFS의 클러스터 크기에 따라 속도와 효율이 달라진다. 클러스터 크기가 낮으면 저장공간을 아낄 수 있지만 속도가 느려진다. 클러스터 크기가 높으면 속도는 빠른대신 저장공간 낭비가 많아진다.&lt;/li&gt;
+&lt;li&gt;우분투를 처음 설치했을때 root 패스워드는 없는 상태이다. &lt;code&gt;sudo passwd root&lt;/code&gt;를 하여 root 패스워드를 지정할 수 있다. 또는 그냥 &lt;code&gt;sudo &amp;lt;command&amp;gt;&lt;/code&gt;를 하면 루트권한으로 커맨드가 실행된다.&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:5&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:5&#34;&gt;6&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;YUMI말고도 다양한 툴들(&lt;a href=&#34;https://en.wikipedia.org/wiki/List_of_tools_to_create_Live_USB_systems&#34;&gt;List of tools to create Live USB systems&lt;/a&gt;)이 있다.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:1&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34;&gt;정확하지는 않다. 경험으로 알게된건데 찾기 귀찮아서&amp;hellip; &amp;ndash;;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:2&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:3&#34;&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Comparison_of_file_systems&#34;&gt;Comparison of file systems&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:3&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:4&#34;&gt;&lt;a href=&#34;http://massukr.tistory.com/155&#34;&gt;USB 메모리 하나로 여러 운영체제 설치 - YUMI&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:4&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:6&#34;&gt;&lt;a href=&#34;http://prolite.tistory.com/165&#34;&gt;VMware USB 부팅 하기&amp;hellip; 첫번째 방법&amp;hellip;&lt;/a&gt;, &lt;a href=&#34;http://prolite.tistory.com/166&#34;&gt;VMware USB 부팅 하기&amp;hellip; 두번째 방법&amp;hellip;&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:6&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:5&#34;&gt;&lt;a href=&#34;http://askubuntu.com/a/434956&#34;&gt;What is the default root password when was never set at installation time?&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:5&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

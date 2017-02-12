@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>My New Hugo Site </title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="description" content="" />
+
+<meta name="keywords" content="">
+
+
+<meta property="og:title" content="My New Hugo Site ">
+<meta property="og:site_name" content="My New Hugo Site"/>
+<meta property="og:url" content="http://example.org/" />
+<meta property="og:locale" content="en-us">
+
+
+<meta property="og:type" content="website" />
+
+
+
+<link href="http://example.org/index.xml" rel="alternate" type="application/rss+xml" title="My New Hugo Site" />
+
+<link rel="canonical" href="http://example.org/" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
+<link rel="icon" href="/favicon.png">
+<meta name="generator" content="Hugo 0.18.1" />
+
+  <!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+
+
+    <link rel="stylesheet" href="http://example.org/css/bootswatch/default/bootstrap.min.css">
+
+
+<link rel="stylesheet" href="http://example.org/css/font-awesome.min.css">
+<link rel="stylesheet" href="http://example.org/css/style.css">
+
+
+  <link rel="stylesheet" href="http://example.org/css/highlight/default.css">
+
+
+</head>
+<body data-ng-app="myapp" data-ng-controller="MyController" data-ng-mouseleave="MouseLeave($event)">
+    <header id="main-header">
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        
+          
+          <a class="navbar-brand-img" href="/">
+            <img alt="" src="">
+            
+          </a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            
+            
+          </ul>
+        </div>
+        
+      </div>
+    </nav>
+  </header>
+
+
+  <div class="container">
+    
+    <div class="row">
+      <div class="col-sm-12">
+        
+        
+          <div class="row">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div>
+  <h2><a href="http://example.org/2015/06/12/history-command/">History Command</a>
+</h2>
+
+  <div class="margin-10">
+    <small>
+  <i class="fa fa-calendar"></i>
+  <time datetime="2015-06-12">12 Jun, 2015</time>
+</small>
+
+    
+
+  </div>
+</div>
+
+    <p>
+  
+  
+    <p>Command line에서 명령을 실행하면 해당 명령이 기록에 남는다. 이 기록을 살펴보는 명령이 <code>history</code>다.</p>
+
+<h2 id="설정">설정</h2>
+
+<p>이 설정은 bash기준이며 다른 쉘에서는 약간 다를 수 있다.<sup class="footnote-ref" id="fnref:1"><a rel="footnote" href="#fn:1">1</a></sup></p>
+
+<pre><code class="language-bash">export HISTTIMEFORMAT='%F %T '              # 로그에 날짜와 시간 출력
+export HISTIGNORE=&quot;pwd:ls:ls -ltr:&quot;         # pwd, ls, ls -ltr명령은 로그에 기록하지 않는다.
+export HISTCONTROL=ignorespace              # 명령 실행시 처음 스페이스가 포함되면 로그에 기록하지 않는다.
+export HISTCONTROL=ignoredups               # 명령이 중복되면 무시 (pwd를 연속으로 여러번 입력하면 로그에는 pwd하나만 기록된다)
+export HISTCONTROL=erasedups                # 중복로그를 삭제하고 최근로그만 남긴다.
+export HISTSIZE=450                         # 저장할 로그 개수 지정 (0을 지정하면 history 기능이 disable된다)
+export HISTFILESIZE=450                     # 저장할 로그 개수 지정
+export HISTFILE=/root/.commandline_warrior  # 히스토리 로그 파일 변경
+</code></pre>
+
+<p></p>
+  
+
+
+</p>
+
+
+    <p class="lead"><a href="http://example.org/2015/06/12/history-command/" class="btn btn-default">Read more &rarr;</a></p>
+
+
+  </div>
+</div>
+
+        
+          <div class="row">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div>
+  <h2><a href="http://example.org/2015/06/12/vim/">VIM</a>
+</h2>
+
+  <div class="margin-10">
+    <small>
+  <i class="fa fa-calendar"></i>
+  <time datetime="2015-06-12">12 Jun, 2015</time>
+</small>
+
+    
+
+  </div>
+</div>
+
+    <p>
+  
+  
+    <p>나는 <a href="http://www.vim.org">vim</a>을 좋아하는데 그 이유는</p>
+
+<ul>
+<li>마우스 사용을 최소화하여 키보드로만 작업이 가능하고,</li>
+<li>프로그램이 작고 가볍고,</li>
+<li>그렇기에 웬만한 머신에는 <a href="http://www.vim.org">vim</a> 또는 vi가 설치되어있어 쉽게 에디팅이 가능하기 때문이다.<sup class="footnote-ref" id="fnref:1"><a rel="footnote" href="#fn:1">1</a></sup></li>
+</ul>
+
+<p></p>
+  
+
+
+</p>
+
+
+    <p class="lead"><a href="http://example.org/2015/06/12/vim/" class="btn btn-default">Read more &rarr;</a></p>
+
+
+  </div>
+</div>
+
+        
+          <div class="row">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div>
+  <h2><a href="http://example.org/2015/06/11/ssh-escape/">SSH Escape</a>
+</h2>
+
+  <div class="margin-10">
+    <small>
+  <i class="fa fa-calendar"></i>
+  <time datetime="2015-06-11">11 Jun, 2015</time>
+</small>
+
+    
+
+  </div>
+</div>
+
+    <p>
+  
+  
+    <p>ssh접속중 탈출하고 싶다면 탈출키 <code>~</code>를 사용한다.</p>
+
+<p></p>
+  
+
+
+</p>
+
+
+    <p class="lead"><a href="http://example.org/2015/06/11/ssh-escape/" class="btn btn-default">Read more &rarr;</a></p>
+
+
+  </div>
+</div>
+
+        
+          <div class="row">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div>
+  <h2><a href="http://example.org/2015/06/11/rotate-nohup-out-file/">rotate nohup out file</a>
+</h2>
+
+  <div class="margin-10">
+    <small>
+  <i class="fa fa-calendar"></i>
+  <time datetime="2015-06-11">11 Jun, 2015</time>
+</small>
+
+    
+
+  </div>
+</div>
+
+    <p>
+  
+  
+    <p>nohup은 터미널이 종료되어도 프로세스를 종료시키지 않고 동작시킬때 사용한다.<sup class="footnote-ref" id="fnref:1"><a rel="footnote" href="#fn:1">1</a></sup></p>
+
+<pre><code class="language-bash">% nohup COMMAND        # nohup.out에 로그가 기록된다.
+% nohup COMMAND &gt; FILE # FILE에 로그가 기록된다.
+</code></pre>
+
+<p>표준출력과 표준에러는 출력파일을 지정하지 않으면 디폴트로 nohup.out에 기록된다.</p>
+
+<p>로그파일을 지우면 프로세스는 출력파일을 잃게되고 프로세스를 재기동하지 않는 이상 로그를 볼 방법이 없다. 디버깅이 어려워지는 상황이 되는것이다. 물론 로그를 표준출력에 의지하지 않고 내부 로깅처리를 한다면야 상관없겠지만 간단한 스크립트에 그런 코드까지 추가한다는게 번거롭고 쉽지 않기도 하다.</p>
+
+<p></p>
+  
+
+
+</p>
+
+
+    <p class="lead"><a href="http://example.org/2015/06/11/rotate-nohup-out-file/" class="btn btn-default">Read more &rarr;</a></p>
+
+
+  </div>
+</div>
+
+        
+          <div class="row">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div>
+  <h2><a href="http://example.org/2015/06/09/peurogeuraemeoreul-wihan-ack-like-grep/">프로그래머를 위한 ack(like-grep)</a>
+</h2>
+
+  <div class="margin-10">
+    <small>
+  <i class="fa fa-calendar"></i>
+  <time datetime="2015-06-09">9 Jun, 2015</time>
+</small>
+
+    
+  <i class="fa fa-tags"></i>
+  
+  </div>
+</div>
+
+    <p>
+  
+  
+    <p><a href="http://unixhelp.ed.ac.uk/CGI/man-cgi?grep">grep</a>은 텍스트에서 키워드를 찾아내는 툴이다. 다음과 같이 사용한다.</p>
+
+<pre><code class="language-bash">% lsb_release --all | grep -i desc
+Description:    Ubuntu 14.04.2 LTS
+</code></pre>
+
+<p>데이터가 많으면 해당 키워드를 찾기가 힘든데 이때 컬러옵션<sup class="footnote-ref" id="fnref:grep-color"><a rel="footnote" href="#fn:grep-color">1</a></sup>을 사용할 수 있다.</p>
+
+<pre><code class="language-bash">% cat /etc/services | grep --color=auto -i http
+# Updated from http://www.iana.org/assignments/port-numbers and other
+# sources like http://www.freebsd.org/cgi/cvsweb.cgi/src/etc/services .
+http            80/tcp          www             # WorldWideWeb HTTP
+http            80/udp                          # HyperText Transfer Protocol
+https           443/tcp                         # http protocol over TLS/SSL
+https           443/udp
+http-alt        8080/tcp        webcache        # WWW caching service
+http-alt        8080/udp
+hkp             11371/tcp                       # OpenPGP HTTP Keyserver
+</code></pre>
+
+<p></p>
+  
+
+
+</p>
+
+
+    <p class="lead"><a href="http://example.org/2015/06/09/peurogeuraemeoreul-wihan-ack-like-grep/" class="btn btn-default">Read more &rarr;</a></p>
+
+
+  </div>
+</div>
+
+        
+          <div class="row">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div>
+  <h2><a href="http://example.org/2015/06/04/linux-package-management/">리눅스 패키지 관리(Linux Package Management)</a>
+</h2>
+
+  <div class="margin-10">
+    <small>
+  <i class="fa fa-calendar"></i>
+  <time datetime="2015-06-04">4 Jun, 2015</time>
+</small>
+
+    
+
+  </div>
+</div>
+
+    <p>
+  
+  
+     리눅스에서 프로그램을 설치하는 방법은 2가지가 있는데 소스코드를 직접 컴파일하여 설치하는 방법과 각 배포판에서 제공하는 패키지 매니저를 통해 설치하는 방법이다.
+Debian APT 데비안에서는 APT(Advanced Packaging Tool)을 사용한다. APT User&rsquo;s Guide
+ apt apt-get apt-cache search {package-name} aptitude dpkg  References  Debian Linux apt-get package management cheat sheet APT and Dpkg Quick Reference Sheet Chapter 2. Debian package management  
+  
+
+
+</p>
+
+
+    <p class="lead"><a href="http://example.org/2015/06/04/linux-package-management/" class="btn btn-default">Read more &rarr;</a></p>
+
+
+  </div>
+</div>
+
+        
+          <div class="row">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div>
+  <h2><a href="http://example.org/2015/05/26/octopress-and-start/">Octopress &amp;amp; Start</a>
+</h2>
+
+  <div class="margin-10">
+    <small>
+  <i class="fa fa-calendar"></i>
+  <time datetime="2015-05-26">26 May, 2015</time>
+</small>
+
+    
+
+  </div>
+</div>
+
+    <p>
+  
+  
+    octopress 정보 요약
+  
+
+
+</p>
+
+
+    <p class="lead"><a href="http://example.org/2015/05/26/octopress-and-start/" class="btn btn-default">Read more &rarr;</a></p>
+
+
+  </div>
+</div>
+
+        
+        
+<nav>
+  <ul class="pagination">
+    
+
+
+<li >
+  <a aria-label="First" href="http://example.org//">
+    <span aria-hidden="true">&laquo;&laquo;</span>
+  </a>
+</li>
+
+<li >
+  <a aria-label="Previous" href="http://example.org//">
+    <span aria-hidden="true">&laquo;</span>
+    </a>
+</li>
+
+<li >
+  <a href="http://example.org//">
+    1
+    </a>
+</li>
+
+<li  class="active" >
+  <a href="http://example.org//page/2/">
+    2
+    </a>
+</li>
+
+
+<li  class="disabled" >
+  <a aria-label="Next" href="#">
+    <span aria-hidden="true">&raquo;</span>
+    </a>
+</li>
+<li  class="disabled" >
+  <a aria-label="Last" href="http://example.org//page/2/">
+    <span aria-hidden="true">&raquo;&raquo;</span>
+  </a>
+</li>
+
+
+  </ul>
+</nav>
+
+
+      </div>
+      
+    </div>
+
+  </div>
+
+      
+<footer class="footer hidden-print">
+  <div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+           <div class="pull-left">
+  <a class="toplink" href="javascript:" id="return-to-top">back to top</a>
+</div>
+<div class="pull-right">
+
+</div>
+
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+              
+    
+<div class="container footline">
+    <small>
+</small>
+</div>
+
+
+    
+
+
+        </div>
+    </div>
+  </div>
+</footer>
+
+    
+
+<script src="http://example.org/js/jquery.min.js"></script>
+<script src="http://example.org/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+<script src="/js/popover/angular-storage.min.js"></script>
+
+
+
+<script src="http://example.org/js/highlight.pack.js"></script>
+<script src="http://example.org/js/site.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+var ENABLE_POPOVER = ""; 
+var EXPIRE_COOKIE = ""; 
+var SHOW_MODAL_TIMEOUT = ""; 
+var MOUSE_LEAVE = ""; 
+var MODAL_SIZE = ""; 
+var POST_URL = ""; 
+var SIGNUP_HEADER = "";
+var HEADER_IMAGE = "";
+var IMG_DESCRIPTION = "";
+var SIGNUP_TEXT = "";
+var INPUT_PLACEHOLDER = "";
+var SUBMIT_BUTTON = "";
+var SUCCESS_MESSAGE = "";
+var ERROR_MESSAGE = "";
+var OPTIN = "";
+var COOKIE_NAME = "";
+</script>
+<script src="/js/popover/angular-modal-service.min.js"></script>
+<script src="/js/angular-ismobile.min.js"></script>
+<script src="/js/popover/popover.min.js"></script>
+
+  </body>
+</html>
+

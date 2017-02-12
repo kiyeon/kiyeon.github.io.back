@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cli Howto on My New Hugo Site</title>
+    <link>http://example.org/tags/cli-howto/index.xml</link>
+    <description>Recent content in Cli Howto on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://example.org/tags/cli-howto/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Change locale in linux</title>
+      <link>http://example.org/2015/06/24/change-locale-in-linux/</link>
+      <pubDate>Wed, 24 Jun 2015 09:28:08 +0000</pubDate>
+      
+      <guid>http://example.org/2015/06/24/change-locale-in-linux/</guid>
+      <description>&lt;p&gt;Locale은 &lt;strong&gt;&amp;lsquo;지역, 언어&amp;rsquo;&lt;/strong&gt;정보로 프로그램은 입/출력시 사용자가 설정한 locale에 따라 인코딩을 적용하여 메세지를 출력한다.&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:1&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;현재값&#34;&gt;현재값&lt;/h2&gt;
+
+&lt;p&gt;현재 설정값을 보려면 &lt;strong&gt;&lt;a href=&#34;http://man.he.net/?topic=locale&amp;amp;section=all&#34;&gt;locale&lt;/a&gt;&lt;/strong&gt;을 사용한다.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;% locale
+LANG=en_US.utf8                # LC_* 값들을 설정하지 않았을때 적용되는 기본 값
+LANGUAGE=
+LC_CTYPE=&amp;quot;en_US.utf8&amp;quot;          # Character classification and case conversion.
+LC_NUMERIC=&amp;quot;en_US.utf8&amp;quot;        # Non-monetary numeric formats.
+LC_TIME=&amp;quot;en_US.utf8&amp;quot;           # Date and time formats.
+LC_COLLATE=&amp;quot;en_US.utf8&amp;quot;        # Collation order(알파벳 정렬과 관련된 규칙).
+LC_MONETARY=&amp;quot;en_US.utf8&amp;quot;       # Monetary formats.
+LC_MESSAGES=&amp;quot;en_US.utf8&amp;quot;       # Formats of informative and diagnostic messages and interactive responses.
+LC_PAPER=&amp;quot;en_US.utf8&amp;quot;          # Paper size.
+LC_NAME=&amp;quot;en_US.utf8&amp;quot;           # Name formats(이름 표기 형식. first name, last name).
+LC_ADDRESS=&amp;quot;en_US.utf8&amp;quot;        # Address formats and location information.
+LC_TELEPHONE=&amp;quot;en_US.utf8&amp;quot;      # Telephone number formats.
+LC_MEASUREMENT=&amp;quot;en_US.utf8&amp;quot;    # Measurement units (Metric or Other).
+LC_IDENTIFICATION=&amp;quot;en_US.utf8&amp;quot; # Metadata about the locale information.
+LC_ALL=                        # LC_*의 값들이 override 된다.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;
+Locale은 다음과 같은 포맷으로 정의된다.
+&lt;code&gt;&amp;lt;lang&amp;gt;_&amp;lt;territory&amp;gt;.&amp;lt;codeset&amp;gt;[@&amp;lt;modifiers&amp;gt;]&lt;/code&gt; = &lt;code&gt;en_US.utf8&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;변경-가능한-목록&#34;&gt;변경 가능한 목록&lt;/h2&gt;
+
+&lt;p&gt;변경 가능한 값을 보려면 &lt;strong&gt;&lt;a href=&#34;http://man.he.net/?topic=locale&amp;amp;section=all&#34;&gt;locale&lt;/a&gt; -a&lt;/strong&gt; or &lt;strong&gt;&lt;a href=&#34;http://man.he.net/?topic=localedef&amp;amp;section=all&#34;&gt;localedef&lt;/a&gt; &amp;ndash;list-archive&lt;/strong&gt;를 사용한다.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;% locale -a
+C
+C.UTF-8
+en_US.utf8
+POSIX
+
+% localedef --list-archive
+en_US.utf8
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;locale데이터는 &lt;code&gt;/usr/lib/locale/locale-archive&lt;/code&gt; 파일에 기록되는데 위 커맨드는 이 아카이브파일에 저장된 목록을 보여준다.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;% ls -lh /usr/lib/locale/locale-archive
+-rw-r--r-- 1 root root 1.3M Jun 24 10:22 /usr/lib/locale/locale-archive
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;지원하는-목록&#34;&gt;지원하는 목록&lt;/h2&gt;
+
+&lt;p&gt;시스템에서 지원하는 목록은 &lt;code&gt;/usr/share/i18n/SUPPORTED&lt;/code&gt;에 기록되어있다.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;% cat /usr/share/i18n/SUPPORTED | wc -l
+457
+
+
+% cat /usr/share/i18n/SUPPORTED
+# This file names the currently supported and somewhat tested locales.
+# If you have any additions please file a glibc bug report.
+aa_DJ.UTF-8 UTF-8
+aa_DJ ISO-8859-1
+aa_ER UTF-8
+aa_ER@saaho UTF-8
+aa_ET UTF-8
+af_ZA.UTF-8 UTF-8
+af_ZA ISO-8859-1
+am_ET UTF-8
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;locale-추가&#34;&gt;Locale 추가&lt;/h2&gt;
+
+&lt;p&gt;지원하는 Locale을 추가할 수 있으며 추가하게 되면 &lt;code&gt;/usr/lib/locale/locale-archive&lt;/code&gt;에 기록이 된다. 추가할때는 &lt;strong&gt;&lt;a href=&#34;http://man.he.net/?topic=locale-gen&amp;amp;section=all&#34;&gt;locale-gen&lt;/a&gt;&lt;/strong&gt;을 사용한다. 지원하는 Locale 목록을 보고 루트권한으로 추가한다. 여기서는 한국어와 프랑스어를 추가한다.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;% cat /usr/share/i18n/SUPPORTED | grep -Ei &#39;(ko_kr|fr_fr)&#39;
+fr_FR.UTF-8 UTF-8
+fr_FR ISO-8859-1
+fr_FR@euro ISO-8859-15
+ko_KR.EUC-KR EUC-KR
+ko_KR.UTF-8 UTF-8
+
+
+% sudo locale-gen ko_KR.utf8 fr_FR.utf8
+Generating locales...
+  fr_FR.UTF-8... done
+  ko_KR.UTF-8... done
+Generation complete.
+
+
+% ls -lh /usr/lib/locale/locale-archive
+-rw-r--r-- 1 root root 2,8M juin  24 11:26 locale-archive # 용량이 늘어났다.
+
+
+% localedef --list-archive # 2개의 locale이 추가되었다.
+en_US.utf8
+fr_FR.utf8
+ko_KR.utf8
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;사용&#34;&gt;사용&lt;/h2&gt;
+
+&lt;p&gt;추가된 Locale을 사용하려면 환경변수 &lt;code&gt;LANG&lt;/code&gt;에 해당 Locale을 지정하면 된다.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;% export LANG=fr_FR.utf8
+
+
+% locale
+LANG=fr_FR.utf8
+LANGUAGE=
+LC_CTYPE=&amp;quot;fr_FR.utf8&amp;quot;
+LC_NUMERIC=&amp;quot;fr_FR.utf8&amp;quot;
+LC_TIME=&amp;quot;fr_FR.utf8&amp;quot;
+LC_COLLATE=&amp;quot;fr_FR.utf8&amp;quot;
+LC_MONETARY=&amp;quot;fr_FR.utf8&amp;quot;
+LC_MESSAGES=&amp;quot;fr_FR.utf8&amp;quot;
+LC_PAPER=&amp;quot;fr_FR.utf8&amp;quot;
+LC_NAME=&amp;quot;fr_FR.utf8&amp;quot;
+LC_ADDRESS=&amp;quot;fr_FR.utf8&amp;quot;
+LC_TELEPHONE=&amp;quot;fr_FR.utf8&amp;quot;
+LC_MEASUREMENT=&amp;quot;fr_FR.utf8&amp;quot;
+LC_IDENTIFICATION=&amp;quot;fr_FR.utf8&amp;quot;
+LC_ALL=
+
+
+% date
+mercredi 24 juin 2015, 21:35:59 (UTC+0900)
+
+
+% export LANG=ko_KR.utf8
+% date
+2015. 06. 24. (수) 21:40:54 KST
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;삭제&#34;&gt;삭제&lt;/h2&gt;
+
+&lt;p&gt;추가된 Locale을 삭제할때는 &lt;code&gt;locale-gen --purge&lt;/code&gt;를 사용하며 이때 인자로 주어진 Locale을 제외한 모든 Locale이 삭제된다.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;% sudo locale-gen --purge en_US.utf8 ko_KR.utf8
+Generating locales...
+  en_US.UTF-8... done
+  ko_KR.UTF-8... done
+Generation complete.
+
+% localedef --list-archive
+en_US.utf8
+ko_KR.utf8
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;시스템-기본값-설정&#34;&gt;시스템 기본값 설정&lt;/h2&gt;
+
+&lt;p&gt;locale을 시스템 기본값으로 변경하려면 &lt;code&gt;/etc/default/locale&lt;/code&gt;에서 &lt;code&gt;LANG&lt;/code&gt;의 값을 변경한후 리부팅을 하면 된다.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;% cat /etc/default/locale
+# Created by cloud-init v. 0.7.5 on Wed, 10 Dec 2014 23:55:44 +0000
+LANG=&amp;quot;en_US.UTF-8&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;정리&#34;&gt;정리&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://man.he.net/?topic=locale&amp;amp;section=all&#34;&gt;locale&lt;/a&gt;, &lt;a href=&#34;http://man.he.net/?topic=localedef&amp;amp;section=all&#34;&gt;localedef&lt;/a&gt; - locale 조회&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://man.he.net/?topic=locale-gen&amp;amp;section=all&#34;&gt;locale-gen&lt;/a&gt; - locale 추가, 제거(&amp;ndash;purge)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/usr/share/i18n/SUPPORTED&lt;/code&gt; - locale 지원 목록&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/usr/lib/locale/locale-archive&lt;/code&gt; - 추가된 실제 locale archive&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/etc/default/locale&lt;/code&gt; - 시스템 기본 locale&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;export LANG=ko_KR.UTF-8&lt;/code&gt; - locale 적용&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.shellhacks.com/en/HowTo-Change-Locale-Language-and-Character-Set-in-Linux&#34;&gt;HowTo : Change Locale (Language and Character Set) in Linux&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://askubuntu.com/a/58200&#34;&gt;How can I uninstall a locale via command-line?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;&lt;a href=&#34;https://ko.wikipedia.org/wiki/%EB%A1%9C%EC%BC%80%EC%9D%BChttps://ko.wikipedia.org/wiki/%EB%A1%9C%EC%BC%80%EC%9D%BC&#34;&gt;Locale at Wikipedia&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:1&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

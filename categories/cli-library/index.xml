@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cli Library on My New Hugo Site</title>
+    <link>http://example.org/categories/cli-library/index.xml</link>
+    <description>Recent content in Cli Library on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://example.org/categories/cli-library/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Curses Library</title>
+      <link>http://example.org/2015/06/19/curses-library/</link>
+      <pubDate>Fri, 19 Jun 2015 11:10:32 +0000</pubDate>
+      
+      <guid>http://example.org/2015/06/19/curses-library/</guid>
+      <description>&lt;p&gt;콘솔을 좋아하는 이유? 심플하기때문에&amp;hellip; 가볍고 빠르고 어디서든 사용할 수 있다는점.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;https://ko.wikipedia.org/wiki/Curses&#34;&gt;curses&lt;/a&gt;는 유닉스 계열 운영체제를 위한 터미널 제어 라이브러리의 하나로, 텍스트 사용자 인터페이스(TUI) 응용 프로그램의 구성을 가능케 한다. 이 이름은 &amp;ldquo;커서 최적화&amp;rdquo;(cusor optimization)에서 따온 것이다. 문자 셀 터미널(VT100 따위) 상에서 응용 프로그램의 디스플레이를 관리하는 명령들이 모인 라이브러리이다. - wikipedia&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://upload.wikimedia.org/wikipedia/commons/1/11/Jack-curses-screen.gif&#34; alt=&#34;screenshot&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;콘솔에 머무르는 시간이 많다보니 필요한 정보들을 한 화면에서 제어하고 싶었고 그럴때 필요한 curses라이브러리를 찾아봤다.&lt;/p&gt;
+
+&lt;h2 id=&#34;java-curses-library-1-2&#34;&gt;Java Curses Library&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:1&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;  &lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:2&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:2&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.pitman.co.za&#34;&gt;Charva&lt;/a&gt; - A Java Windowing Toolkit for Text Terminals.
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.pitman.co.za/projects/charva/api/index.html&#34;&gt;Charva API documentation&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://sourceforge.net/projects/javacurses/&#34;&gt;Java Curses Library&lt;/a&gt; - JCurses, a java console windowing toolkit for Windows and Linux&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://code.google.com/p/blacken/&#34;&gt;Blacken&lt;/a&gt; - Blacken is a library which provides an enhanced console-like interface.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://code.google.com/p/lanterna/&#34;&gt;Lanterna&lt;/a&gt; - Lanterna is a Java library allowing you to write easy semi-graphical user interfaces in a text-only environment, very similar to the C library curses but with more functionality.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;shell-curses-library&#34;&gt;Shell Curses Library&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.ibm.com/developerworks/aix/library/au-shellcurses/#resources&#34;&gt;Shell Curses function library&lt;/a&gt; - &amp;ldquo;Shell Curses&amp;rdquo; is a library of script functions that provide the shell programmer the ability to perform text-based cursor movements to specified locations on the screen.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://code.google.com/p/bashsimplecurses/&#34;&gt;Bashsimplecurses&lt;/a&gt; - Create simple ncurses windows with bash&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://hightek.org/projects/dialog/&#34;&gt;Dialog&lt;/a&gt; - Dialog is a utility to create nice user interfaces to shell scripts, or other scripting languages, such as perl. It is non-graphical (it uses curses) so it can be run in the console or an xterm. There are also graphical Xwindows versions mentioned below.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;&lt;a href=&#34;http://www.drdobbs.com/open-source/curses-in-java/228700553&#34;&gt;Curses in Java&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:1&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34;&gt;&lt;a href=&#34;http://stackoverflow.com/q/439799&#34;&gt;What&amp;rsquo;s a good Java, curses-like, library for terminal applications?&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:2&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

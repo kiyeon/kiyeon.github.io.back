@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Jekyll on My New Hugo Site</title>
+    <link>http://example.org/categories/jekyll/index.xml</link>
+    <description>Recent content in Jekyll on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://example.org/categories/jekyll/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Jekyll</title>
+      <link>http://example.org/2016/02/10/jekyll/</link>
+      <pubDate>Wed, 10 Feb 2016 14:28:00 +0000</pubDate>
+      
+      <guid>http://example.org/2016/02/10/jekyll/</guid>
+      <description>&lt;p&gt;Link&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Jekyll Wiki
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/jekyll/jekyll/wiki/Themes&#34;&gt;Themes&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/jekyll/jekyll/wiki/Sites&#34;&gt;지킬로 만들어진 사이트&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://jekyllbootstrap.com/&#34;&gt;jekyllbootstrap.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://jekyllthemes.org/&#34;&gt;jekyllthemes.org&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

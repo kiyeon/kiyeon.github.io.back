@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cli on My New Hugo Site</title>
+    <link>http://example.org/categories/cli/index.xml</link>
+    <description>Recent content in Cli on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://example.org/categories/cli/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>History Command</title>
+      <link>http://example.org/2015/06/12/history-command/</link>
+      <pubDate>Fri, 12 Jun 2015 11:35:51 +0000</pubDate>
+      
+      <guid>http://example.org/2015/06/12/history-command/</guid>
+      <description>&lt;p&gt;Command line에서 명령을 실행하면 해당 명령이 기록에 남는다. 이 기록을 살펴보는 명령이 &lt;code&gt;history&lt;/code&gt;다.&lt;/p&gt;
+
+&lt;h2 id=&#34;설정&#34;&gt;설정&lt;/h2&gt;
+
+&lt;p&gt;이 설정은 bash기준이며 다른 쉘에서는 약간 다를 수 있다.&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:1&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;export HISTTIMEFORMAT=&#39;%F %T &#39;              # 로그에 날짜와 시간 출력
+export HISTIGNORE=&amp;quot;pwd:ls:ls -ltr:&amp;quot;         # pwd, ls, ls -ltr명령은 로그에 기록하지 않는다.
+export HISTCONTROL=ignorespace              # 명령 실행시 처음 스페이스가 포함되면 로그에 기록하지 않는다.
+export HISTCONTROL=ignoredups               # 명령이 중복되면 무시 (pwd를 연속으로 여러번 입력하면 로그에는 pwd하나만 기록된다)
+export HISTCONTROL=erasedups                # 중복로그를 삭제하고 최근로그만 남긴다.
+export HISTSIZE=450                         # 저장할 로그 개수 지정 (0을 지정하면 history 기능이 disable된다)
+export HISTFILESIZE=450                     # 저장할 로그 개수 지정
+export HISTFILE=/root/.commandline_warrior  # 히스토리 로그 파일 변경
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;사용&#34;&gt;사용&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;Ctrl+R&lt;/code&gt;을 사용하여 history명령을 활용할 수 있다. Enter를 치면 검색한 명령이 수행된다. Backspace로 검색어를 삭제한뒤 재검색할 수 있다. 수정이 필요하면 esc나 화살키를 사용한다.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# Ctrl+R
+(reverse-i-search)`&#39;: 
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;키보드의 &lt;code&gt;Up키&lt;/code&gt;나 &lt;code&gt;Down키&lt;/code&gt; 또는 &lt;code&gt;Ctrl+P&lt;/code&gt;나 &lt;code&gt;Ctrl+N&lt;/code&gt;으로 이전명령 다음명령을 선택하여 재실행 할 수 있다.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;!!&lt;/code&gt; or &lt;code&gt;!-1&lt;/code&gt; 바로 이전 명령을 재실행 한다.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;![no]&lt;/code&gt;로 history number에 해당하는 명령을 재실행 한다.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;![keyword]&lt;/code&gt;로 가장 최근의 키워드로 검색하여 재실행한다.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;vi !!:$&lt;/code&gt; 이전명령의 마지막 인자 활용&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;vi !!:[no]&lt;/code&gt; 이전명령의 [no]인자 활용&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;vi !^&lt;/code&gt; 이전명령의 첫번째 인자 활용&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;ls -l !cp:2&lt;/code&gt; 최근 사용한 cp명령의 두번째 인자 활용&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;history 53&lt;/code&gt; 53부터 마지막까지 로그 출력&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;history -10&lt;/code&gt; 마지막부터 10개까지 로그 출력&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code&gt;history -c&lt;/code&gt;를 하면 히스토리기록을 모두 삭제한다.&lt;/p&gt;
+
+&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.thegeekstuff.com/2008/08/15-examples-to-master-linux-command-line-history/&#34;&gt;15 Examples To Master Linux Command Line History&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://unixhelp.ed.ac.uk/shell/ksh_hist.html&#34;&gt;Using command history with the Korn shell&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;&lt;a href=&#34;http://www.linuxquestions.org/questions/aix-43/history-cammand-with-date-format-705416/&#34;&gt;ksh은 안된다.&lt;/a&gt; 꼼수로 다음과 같이 사용한다. &lt;code&gt;PS1=&#39;$(printf &amp;quot;%(# %D %T )T&amp;quot; | read -s)$ &#39;&lt;/code&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:1&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>SSH Escape</title>
+      <link>http://example.org/2015/06/11/ssh-escape/</link>
+      <pubDate>Thu, 11 Jun 2015 17:31:02 +0000</pubDate>
+      
+      <guid>http://example.org/2015/06/11/ssh-escape/</guid>
+      <description>&lt;p&gt;ssh접속중 탈출하고 싶다면 탈출키 &lt;code&gt;~&lt;/code&gt;를 사용한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;% ssh acc@localhost
+% ~? # 실제로 ~는 탈출키이므로 화면에 보이지 않는다.
+Supported escape sequences:
+ ~.   - terminate connection (and any multiplexed sessions)
+ ~B   - send a BREAK to the remote system
+ ~C   - open a command line
+ ~R   - request rekey
+ ~V/v - decrease/increase verbosity (LogLevel)
+ ~^Z  - suspend ssh
+ ~#   - list forwarded connections
+ ~&amp;amp;   - background ssh (when waiting for connections to terminate)
+ ~?   - this message
+ ~~   - send the escape character by typing it twice
+(Note that escapes are only recognized immediately after newline.)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;ssh접속중 로컬작업이 필요하면 &lt;code&gt;~^Z&lt;/code&gt;를 사용하면 된다.&lt;/p&gt;
+
+&lt;p&gt;백그라운드 잡 리스트를 보고 싶다면 &lt;code&gt;jobs&lt;/code&gt; or &lt;code&gt;bg&lt;/code&gt;&lt;br /&gt;
+다시 돌아가려면 &lt;code&gt;fg&lt;/code&gt;(마지막 잡으로 복귀)&lt;br /&gt;
+특정잡으로 돌아가려면 &lt;code&gt;fg %숫자&lt;/code&gt;&lt;br /&gt;
+종료하려면 &lt;code&gt;kill %숫자&lt;/code&gt;&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:ref&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:ref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:ref&#34;&gt;&lt;a href=&#34;http://www.thegeekstuff.com/2010/05/unix-background-job/&#34;&gt;Bg, Fg, &amp;amp;, Ctrl-Z – 5 Examples to Manage Unix Background Jobs&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:ref&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>rotate nohup out file</title>
+      <link>http://example.org/2015/06/11/rotate-nohup-out-file/</link>
+      <pubDate>Thu, 11 Jun 2015 09:07:45 +0000</pubDate>
+      
+      <guid>http://example.org/2015/06/11/rotate-nohup-out-file/</guid>
+      <description>&lt;p&gt;nohup은 터미널이 종료되어도 프로세스를 종료시키지 않고 동작시킬때 사용한다.&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:1&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;% nohup COMMAND        # nohup.out에 로그가 기록된다.
+% nohup COMMAND &amp;gt; FILE # FILE에 로그가 기록된다.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;표준출력과 표준에러는 출력파일을 지정하지 않으면 디폴트로 nohup.out에 기록된다.&lt;/p&gt;
+
+&lt;p&gt;로그파일을 지우면 프로세스는 출력파일을 잃게되고 프로세스를 재기동하지 않는 이상 로그를 볼 방법이 없다. 디버깅이 어려워지는 상황이 되는것이다. 물론 로그를 표준출력에 의지하지 않고 내부 로깅처리를 한다면야 상관없겠지만 간단한 스크립트에 그런 코드까지 추가한다는게 번거롭고 쉽지 않기도 하다.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;mknod로 fifo파일을 만들고 nohup의 출력을 fifo파일로 한다. cat에서 fifo를 입력으로 받아 출력방향을 정한다. 표준출력은 &lt;code&gt;&amp;gt;&lt;/code&gt;, 표준에러는 &lt;code&gt;2&amp;gt;&lt;/code&gt; 표준출력과 같은 파일에 표준에러를 쓰려면 &lt;code&gt;&amp;amp;1&lt;/code&gt;을 준다.&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:3&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:3&#34;&gt;2&lt;/a&gt;&lt;/sup&gt; 주의할점은 프로세스실행후 처음 fifo에 대한 출력을 한번 뚫어(?) 줘야 한다는거다. 그렇지 않으면 프로세스가 stop상태로 동작을 하지 않는다. 아마 출력장치가 접속되길 기다리는거 같다. 한번 출력지정후엔 출력파일이 끊겨도 계속 동작한다.&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:2&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:2&#34;&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;mknod /tmp/mypipe p
+cat &amp;lt; /tmp/mypipe &amp;gt; /tmp/myreallog
+nohup myapplication &amp;gt;/tmp/mypipe
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To rotate the log&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;mv /tmp/myreallog /tmp/rotatedlog
+kill [pid of the cat process]
+cat &amp;lt; /tmp/mypipe &amp;gt;/tmp/myreallog
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://silviud.blogspot.kr/2011/01/rotate-nohup-out-file-nohuplog.html&#34;&gt;rotate nohup out file (nohup.log)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;alternative&#34;&gt;Alternative&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://linux.softpedia.com/get/Utilities/flog-12382.shtml&#34;&gt;flog&lt;/a&gt; - flog (file logger) is a program that reads input from STDIN and writes to a file.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://xp-rience.blogspot.kr/2010/07/using-roratelogs-to-rotate-nohupout.html&#34;&gt;rotatelogs or logrotate&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;터미널이 종료되면 사용자의 모든 프로세스에 hangup signal이 전달되고 이 시그널을 받은 프로세스들은 종료절차를 밟는다.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:1&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:3&#34;&gt;&lt;code&gt;COMMAND &amp;gt; stdout.log 2&amp;gt; &amp;amp;1&lt;/code&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:3&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34;&gt;Ubuntu에서는 출력파일이 없어지면 &lt;strong&gt;broken pipe  nohup&lt;/strong&gt;이 발생하면서 프로세스가 종료된다.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:2&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>프로그래머를 위한 ack(like-grep)  &middot; My New Hugo Site</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="description" content="" />
+
+<meta name="keywords" content="
+  <!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+
+
+    <link rel="stylesheet" href="http://example.org/css/bootswatch/default/bootstrap.min.css">
+
+
+<link rel="stylesheet" href="http://example.org/css/font-awesome.min.css">
+<link rel="stylesheet" href="http://example.org/css/style.css">
+
+
+  <link rel="stylesheet" href="http://example.org/css/highlight/default.css">
+
+
+</head>
+<body data-ng-app="myapp" data-ng-controller="MyController" data-ng-mouseleave="MouseLeave($event)">
+    <header id="main-header">
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        
+          
+          <a class="navbar-brand-img" href="/">
+            <img alt="" src="">
+            
+          </a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            
+            
+          </ul>
+        </div>
+        
+      </div>
+    </nav>
+  </header>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+  <div class="text-center">
+
+    <h1>프로그래머를 위한 ack(like-grep)
+</h1>
+
+    <div class="metas">
+<small>
+  <i class="fa fa-calendar"></i>
+  <time datetime="2015-06-09">9 Jun, 2015</time>
+</small>
+
+
+  <small>
+  &middot; Read in about 1 min
+  &middot; (193 words)
+</small>
+
+
+<div class="margin-10">
+  <i class="fa fa-tags"></i>
+  
+</div>
+<br>
+</div>
+
+  </div>
+</div>
+
+      <div class="content">
+  <p><a href="http://unixhelp.ed.ac.uk/CGI/man-cgi?grep">grep</a>은 텍스트에서 키워드를 찾아내는 툴이다. 다음과 같이 사용한다.</p>
+
+<pre><code class="language-bash">% lsb_release --all | grep -i desc
+Description:    Ubuntu 14.04.2 LTS
+</code></pre>
+
+<p>데이터가 많으면 해당 키워드를 찾기가 힘든데 이때 컬러옵션<sup class="footnote-ref" id="fnref:grep-color"><a rel="footnote" href="#fn:grep-color">1</a></sup>을 사용할 수 있다.</p>
+
+<pre><code class="language-bash">% cat /etc/services | grep --color=auto -i http
+# Updated from http://www.iana.org/assignments/port-numbers and other
+# sources like http://www.freebsd.org/cgi/cvsweb.cgi/src/etc/services .
+http            80/tcp          www             # WorldWideWeb HTTP
+http            80/udp                          # HyperText Transfer Protocol
+https           443/tcp                         # http protocol over TLS/SSL
+https           443/udp
+http-alt        8080/tcp        webcache        # WWW caching service
+http-alt        8080/udp
+hkp             11371/tcp                       # OpenPGP HTTP Keyserver
+</code></pre>
+
+<p></p>
+
+<p>grep은 컬러지정에 한계가 있고 키워드가있는 라인만 출력된다. 전체적으로 내용이 표시되며 특정 키워드마다 색을 다르게 적용하고 싶었는데 <a href="http://beyondgrep.com/">ack</a>를 발견했다.</p>
+
+<p><a href="http://beyondgrep.com/">ack</a>는 빠르고, 소스코드를 찾는 프로그래머를 위해 만들어졌다. 순수 펄로작성되어 펄(5.8.8 이상)이 설치된 어느 머신에서나 간편하게 사용할 수 있다.</p>
+
+<p><a href="http://beyondgrep.com/install/">ack 설치</a>
+<code>curl http://beyondgrep.com/ack-2.14-single-file &gt; ~/bin/ack &amp;&amp; chmod 0755 !#:3</code></p>
+
+<p><a href="http://beyondgrep.com/">ack</a>사이트에 가면 <a href="http://beyondgrep.com/more-tools/">ack를 사용한 다양한 툴들</a>을 모아놨는데 <a href="https://github.com/paoloantinori/hhighlighter">hhighlighter</a>를 사용하면 쉽게 파일내 키워드들에 highlight를 적용할 수 있다.
+<code>cat file | h foo bar bat</code></p>
+
+<p>vim이나 emacs, TextMate를 위한 플러그인도 있으며 다른 grep-like 툴들도 안내하고 있다.</p>
+
+<p><strong>Ack in five minutes</strong>
+<a href="https://www.youtube.com/watch?v=sKmyl5D8Da8">Rocky Mountain Ruby 2012 Lightning Talk: Ack by Cameron Pope</a></p>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:grep-color">grep에서 찾은 키워드의 컬러를 변경할 수 있는데 GREP_COLOR환경변수를 사용한다. <code>GREP_COLOR=&quot;1;33;40&quot;</code>. 값은 <a href="http://www.pixelbeat.org/docs/terminal_colours/">안시컬러</a>를 사용한다.
+ <a class="footnote-return" href="#fnref:grep-color"><sup>[return]</sup></a></li>
+</ol>
+</div>
+</div>
+
+
+      <footer>
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      
+  
+    <nav><ul class="pager">
+    
+        <li class="previous">
+          <a href="http://example.org/2015/06/04/linux-package-management/" title="리눅스 패키지 관리(Linux Package Management)">
+            <span aria-hidden="true">&larr;</span>Previous
+          </a>
+        </li>
+    
+
+    
+      <li class="next">
+        <a href="http://example.org/2015/06/11/rotate-nohup-out-file/" title="rotate nohup out file">
+            Next <span aria-hidden="true">&rarr;</span>
+        </a>
+      </li>
+    
+    </ul> </nav>
+  
+
+
+</div>
+
+  <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
+  
+
+</div>
+
+</footer>
+
+    </div>
+    
+  </div>
+</div>
+      
+<footer class="footer hidden-print">
+  <div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+           <div class="pull-left">
+  <a class="toplink" href="javascript:" id="return-to-top">back to top</a>
+</div>
+<div class="pull-right">
+
+</div>
+
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+              
+    
+<div class="container footline">
+    <small>
+</small>
+</div>
+
+
+    
+
+
+        </div>
+    </div>
+  </div>
+</footer>
+
+    
+
+<script src="http://example.org/js/jquery.min.js"></script>
+<script src="http://example.org/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+<script src="/js/popover/angular-storage.min.js"></script>
+
+
+
+<script src="http://example.org/js/highlight.pack.js"></script>
+<script src="http://example.org/js/site.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+var ENABLE_POPOVER = ""; 
+var EXPIRE_COOKIE = ""; 
+var SHOW_MODAL_TIMEOUT = ""; 
+var MOUSE_LEAVE = ""; 
+var MODAL_SIZE = ""; 
+var POST_URL = ""; 
+var SIGNUP_HEADER = "";
+var HEADER_IMAGE = "";
+var IMG_DESCRIPTION = "";
+var SIGNUP_TEXT = "";
+var INPUT_PLACEHOLDER = "";
+var SUBMIT_BUTTON = "";
+var SUCCESS_MESSAGE = "";
+var ERROR_MESSAGE = "";
+var OPTIN = "";
+var COOKIE_NAME = "";
+</script>
+<script src="/js/popover/angular-modal-service.min.js"></script>
+<script src="/js/angular-ismobile.min.js"></script>
+<script src="/js/popover/popover.min.js"></script>
+
+  </body>
+</html>
+

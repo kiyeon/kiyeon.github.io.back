@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Utility on My New Hugo Site</title>
+    <link>http://example.org/categories/utility/index.xml</link>
+    <description>Recent content in Utility on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://example.org/categories/utility/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>OCR</title>
+      <link>http://example.org/2015/12/02/ocr/</link>
+      <pubDate>Wed, 02 Dec 2015 10:18:00 +0000</pubDate>
+      
+      <guid>http://example.org/2015/12/02/ocr/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;https://ko.wikipedia.org/wiki/%EA%B4%91%ED%95%99_%EB%AC%B8%EC%9E%90_%EC%9D%B8%EC%8B%9D&#34;&gt;광학 문자 인식(Optical character recognition; OCR)&lt;/a&gt;&lt;br /&gt;
+&lt;img src=&#34;https://janusit.files.wordpress.com/2008/12/300_cpen20reading.jpg&#34; alt=&#34;OCR&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;software&#34;&gt;Software&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.abbyy.com/finereader/&#34;&gt;ABBYY FineReader&lt;/a&gt; - &lt;a href=&#34;http://chanyong.tistory.com/69&#34;&gt;문자 인식(OCR) 책 스캔 프로그램 추천 : 한글 영문 인식률 결과&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;online-ocr-services&#34;&gt;Online OCR services&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://ocr1.sc.isc.tohoku.ac.jp/e1/&#34;&gt;WeOCR&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.customocr.com/index.php?r=site/page&amp;amp;view=demos.tesseract_ocr&#34;&gt;CustomOCR&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.free-ocr.com/&#34;&gt;Free OCR&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.i2ocr.com/&#34;&gt;i2OCR&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;open-source&#34;&gt;Open source&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/tesseract-ocr/tesseract&#34;&gt;Tesseract&lt;/a&gt; - Tesseract Open Source OCR Engine (main repository)
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/tesseract-ocr/tesseract/wiki/3rdParty&#34;&gt;3rdParty&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

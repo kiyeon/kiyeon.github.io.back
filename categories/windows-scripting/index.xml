@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Windows Scripting on My New Hugo Site</title>
+    <link>http://example.org/categories/windows-scripting/index.xml</link>
+    <description>Recent content in Windows Scripting on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://example.org/categories/windows-scripting/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Windows Batch Scripting</title>
+      <link>http://example.org/2015/06/17/windows-batch-scripting/</link>
+      <pubDate>Wed, 17 Jun 2015 09:42:37 +0000</pubDate>
+      
+      <guid>http://example.org/2015/06/17/windows-batch-scripting/</guid>
+      <description>&lt;p&gt;MS의 DOS로 시작해 Windows를 거쳐 유닉스와 리눅스를 만나고 이제는 유닉스(Mac)에 정착했다. 하지만 여전히 일선상에서는 Windows를 벗어나지 못하고 있다. 로컬OS는 Windows를 사용하지만 대부분 서비스를 이용하기위한(업무환경) 수단일뿐 실제 개발은 리눅스상에서 더 많이 한다. 좋든 실든 업무효율성을 높이기 위해 다양한 유틸리티와 Script가 필요하다.&lt;/p&gt;
+
+&lt;p&gt;여러대의 서버로 파일을 업로드하는 간단한 스크립트를 살펴보며 Window Batch Script를 알아보자.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;echoing-off와-주석&#34;&gt;Echoing off와 주석&lt;/h2&gt;
+
+&lt;p&gt;Windows Batch Script를 실행하면 Command가 화면에 함께 출력된다. 좀 특이하지만 이런 출력을 &lt;code&gt;echo on/off&lt;/code&gt;로 제어할 수 있다.&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:2&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:2&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;  &lt;a href=&#34;http://www.microsoft.com/resources/documentation/windows/xp/all/proddocs/en-us/echo.mspx&#34;&gt;echo&lt;/a&gt;자체도 command이므로 앞에 &lt;code&gt;@&lt;/code&gt;를 붙여줘서 &lt;a href=&#34;http://www.microsoft.com/resources/documentation/windows/xp/all/proddocs/en-us/echo.mspx&#34;&gt;echo&lt;/a&gt;역시 화면에 출력되지 않게 한다.&lt;/p&gt;
+
+&lt;p&gt;newline을 출력하려면 &lt;code&gt;echo.&lt;/code&gt;을 사용한다.&lt;/p&gt;
+
+&lt;p&gt;주석은 &lt;code&gt;::&lt;/code&gt;를 사용한다. &lt;a href=&#34;http://www.microsoft.com/resources/documentation/windows/xp/all/proddocs/en-us/rem.mspx&#34;&gt;REM&lt;/a&gt;을 사용할 수도있지만 &lt;a href=&#34;http://www.microsoft.com/resources/documentation/windows/xp/all/proddocs/en-us/rem.mspx&#34;&gt;REM&lt;/a&gt;은 &lt;code&gt;echo on/off&lt;/code&gt;에 영향을 받는다.&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:1&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:1&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-batch&#34;&gt;:: command echoing을 off한다. 앞에 @는 echo자체 역시 화면에 출력하지 않도록 한다.
+@echo off
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;변수&#34;&gt;변수&lt;/h2&gt;
+
+&lt;p&gt;변수를 설정할때는 &lt;a href=&#34;http://www.microsoft.com/resources/documentation/windows/xp/all/proddocs/en-us/set.mspx&#34;&gt;SET&lt;/a&gt;을 사용하며 변수명과 값사이는 공백이 들어가면 안된다. 사용할때는 &lt;code&gt;%변수명%&lt;/code&gt;처럼 변수명 양옆을 &lt;code&gt;%&lt;/code&gt;로 감싼다.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-batch&#34;&gt;set ID=kiyeon
+set PW=niceguy
+set TODAY=%date:~0,4%%date:~5,2%%date:~8,2%
+set SRCFILE=c:/dump.zip
+set DSTFILE=./dump_%TODAY%.zip
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://en.wikibooks.org/wiki/Windows_Batch_Scripting#DATE&#34;&gt;date&lt;/a&gt;는 시스템의 시간을 출력하는데 Script내에서 &lt;code&gt;%date%&lt;/code&gt;로 사용할 수 있으며&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:8&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:8&#34;&gt;3&lt;/a&gt;&lt;/sup&gt; 출력포맷을 지정하고 싶다면 &lt;code&gt;set isodate=%date:~0,4%%date:~5,2%%date:~8,2%&lt;/code&gt;처럼 사용한다.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-batch&#34;&gt;set isodate=%date:~0,4%%date:~5,2%%date:~8,2%
+echo %isodate%
+20150617
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;배열과-루프&#34;&gt;배열과 루프&lt;/h2&gt;
+
+&lt;p&gt;Batch script는 배열을 지원하지 않는다. 하지만 아래와 같은 꼼수로 배열처럼 사용할 수 있다.&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:3&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:3&#34;&gt;4&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;p&gt;루프는 &lt;a href=&#34;http://www.microsoft.com/resources/documentation/windows/xp/all/proddocs/en-us/for.mspx&#34;&gt;for&lt;/a&gt;문이 있으며 값이 대입되는 변수의 명은 한자리 알파벳이여야 한다. &lt;a href=&#34;http://www.microsoft.com/resources/documentation/windows/xp/all/proddocs/en-us/goto.mspx&#34;&gt;goto&lt;/a&gt;와 &lt;a href=&#34;http://www.microsoft.com/resources/documentation/windows/xp/all/proddocs/en-us/if.mspx&#34;&gt;if&lt;/a&gt;문을 응용할 수도 있다.&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:4&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:4&#34;&gt;5&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;p&gt;이 예제에서는 &lt;a href=&#34;http://www.chiark.greenend.org.uk/~sgtatham/putty/&#34;&gt;PuTTY&lt;/a&gt;에서 제공하는 &lt;a href=&#34;http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html&#34;&gt;pscp&lt;/a&gt;&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:5&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:5&#34;&gt;6&lt;/a&gt;&lt;/sup&gt;와 &lt;a href=&#34;http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html&#34;&gt;plink&lt;/a&gt;&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:6&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:6&#34;&gt;7&lt;/a&gt;&lt;/sup&gt;를 사용한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;goto :eof&lt;/code&gt;(end of file)는 스크립트의 마지막으로 간다. 즉 스크립트를 종료한다. 함수를 스크립트 파일 하단에 위치시키는데 이 구문이 없으면 하단에 있는 명령들을 모두 실행하고 스크립트가 종료하게 된다.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-batch&#34;&gt;set IP[01]=0.0.0.1
+set IP[02]=0.0.0.2
+set IP[03]=0.0.0.3
+set IP[04]=0.0.0.4
+
+call :alert Upload dump file ...
+:: echo %result% 
+
+for /F &amp;quot;tokens=2 delims==&amp;quot; %%v in (&#39;set IP[&#39;) do (
+  pscp -pw %PW% %SRCFILE% %ID%@%%v:%DSTFILE%
+  call :result %%v
+
+  plink -pw %PW% -batch %ID%@%%v chmod 700 %DSTFILE%
+  call :result %%v
+)
+
+call :alert Finished upload.
+goto :eof
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;함수&#34;&gt;함수&lt;/h2&gt;
+
+&lt;p&gt;함수역시 일반적인 프로그래밍언어에서 사용하는 방식과 다르게 &lt;a href=&#34;http://www.microsoft.com/resources/documentation/windows/xp/all/proddocs/en-us/call.mspx&#34;&gt;call&lt;/a&gt;, labels, &lt;a href=&#34;http://www.microsoft.com/resources/documentation/windows/xp/all/proddocs/en-us/setlocal.mspx&#34;&gt;setlocal&lt;/a&gt;, &lt;a href=&#34;http://www.microsoft.com/resources/documentation/windows/xp/all/proddocs/en-us/endlocal.mspx&#34;&gt;endlocal&lt;/a&gt;을 이용하여 함수처럼 사용한다.&lt;/p&gt;
+
+&lt;p&gt;함수는 스크립트 파일의 하단에 위치시키고, 인자는 &lt;code&gt;%1 %2&lt;/code&gt;처럼 사용한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.microsoft.com/resources/documentation/windows/xp/all/proddocs/en-us/exit.mspx&#34;&gt;exit&lt;/a&gt;는 batch script를 종료하거나 cmd.exe program을 종료시킨다. &lt;code&gt;/b&lt;/code&gt;옵션과 함께 사용하면 현재 batch script를 종료한다. &lt;code&gt;/b&lt;/code&gt;옵션과함께 &lt;code&gt;ExitCode&lt;/code&gt;를 사용하면 &lt;a href=&#34;https://en.wikibooks.org/wiki/Windows_Batch_Scripting#Special_names&#34;&gt;ERRORLEVEL&lt;/a&gt;에 &lt;code&gt;ExitCode&lt;/code&gt;가 지정되어 call function의 성공 유무를 체크할 수 있다. &lt;code&gt;%ERRORLEVEL%&lt;/code&gt;은 마지막으로 실행된 명령 또는 배치스크립트의  &lt;a href=&#34;https://en.wikibooks.org/wiki/Windows_Batch_Scripting#Error_level&#34;&gt;error level&lt;/a&gt;을 리턴한다.&lt;/p&gt;
+
+&lt;p&gt;return value를 전달하는 기능은 없지만 역시 꼼수로 변수에 리턴값을 지정해 사용할 수 있다.&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:7&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:7&#34;&gt;8&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.microsoft.com/resources/documentation/windows/xp/all/proddocs/en-us/setlocal.mspx&#34;&gt;setlocal&lt;/a&gt;과 &lt;a href=&#34;http://www.microsoft.com/resources/documentation/windows/xp/all/proddocs/en-us/endlocal.mspx&#34;&gt;endlocal&lt;/a&gt;로 함수내에서 사용된 변수를 지역화할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;함수의 호출은 &lt;code&gt;call :label&lt;/code&gt;로 한다.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-batch&#34;&gt;:alert
+setlocal
+  echo ##########################################################
+  echo ## %*
+  echo ##########################################################
+  pause
+endlocal &amp;amp; set result=end of alert
+exit /b 0
+
+:result
+setlocal
+  if %errorlevel% neq 0 (
+    echo Failed upload to the %1. Errorlevel:%errorlevel%
+  ) else (
+    echo Completed upload to the %1. Errorlevel:%errorlevel%
+  )
+endlocal &amp;amp; set result=end of result
+exit /b 0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;재사용&#34;&gt;재사용&lt;/h2&gt;
+
+&lt;p&gt;공통으로 사용할 수 있는 설정및 함수를 따로 파일로 분리한뒤 &lt;a href=&#34;http://www.microsoft.com/resources/documentation/windows/xp/all/proddocs/en-us/call.mspx&#34;&gt;call&lt;/a&gt;로 재사용할 수 있다.&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:9&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:9&#34;&gt;9&lt;/a&gt;&lt;/sup&gt; 위 예제를 재구성 해보자.
+``` batch sendfile.cmd
+@echo off
+call config.cmd
+set SRCFILE=c:/dump.zip
+set DSTFILE=./dump_%TODAY%.zip&lt;/p&gt;
+
+&lt;p&gt;call function_alert.cmd Upload dump file &amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;for /F &amp;ldquo;tokens=2 delims==&amp;rdquo; %%v in (&amp;lsquo;set IP[&amp;lsquo;) do (
+  pscp -pw %PW% %SRCFILE% %ID%@%%v:%DSTFILE%
+  call function_result.cmd %%v&lt;/p&gt;
+
+&lt;p&gt;plink -pw %PW% -batch %ID%@%%v chmod 700 %DSTFILE%
+  call function_result.cmd %%v
+)&lt;/p&gt;
+
+&lt;p&gt;call function_alert.cmd Finished upload.
+goto :eof&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+``` batch config.cmd
+set ID=kiyeon
+set PW=niceguy
+set IP[01]=0.0.0.1
+set IP[02]=0.0.0.2
+set IP[03]=0.0.0.3
+set IP[04]=0.0.0.4
+set TODAY=%date:~0,4%%date:~5,2%%date:~8,2%
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;``` batch function_alert.cmd
+:alert
+setlocal
+  echo ##########################################################
+  echo ## %*
+  echo ##########################################################
+  pause
+endlocal &amp;amp; set result=end of alert
+exit /b 0&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+``` batch function_result.cmd
+:result
+setlocal
+  if %errorlevel% neq 0 (
+    echo Failed upload to the %1. Errorlevel:%errorlevel%
+  ) else (
+    echo Completed upload to the %1. Errorlevel:%errorlevel%
+  )
+endlocal &amp;amp; set result=end of result
+exit /b 0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;여러대의 서버에 파일을 업로드하는 간단한 스크립트를 만들어 봤다.&lt;/p&gt;
+
+&lt;p&gt;여기서는 변수의 선언과 배열방식으로의 사용 반복문과 함수, 조건문과 외부 유틸리티를 사용하고 상호 동작하는 방법도 엿볼 수 있다.&lt;/p&gt;
+
+&lt;p&gt;Windows의 Batch Script는 낯설지만 윈도우 환경에서 간편하게 사용하기에 괜찮은거 같다. 이상하지만 재미난 스크립트다.&lt;/p&gt;
+
+&lt;p&gt;좀더 제대로 사용하려면 &lt;a href=&#34;https://www.cygwin.com/&#34;&gt;Cygwin&lt;/a&gt;을 이용한 쉘스크립팅이나 &lt;a href=&#34;https://en.wikipedia.org/wiki/Windows_PowerShell&#34;&gt;Power Shell&lt;/a&gt;이 있다.&lt;/p&gt;
+
+&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.wikibooks.org/wiki/Windows_Batch_Scripting&#34;&gt;Windows Batch Scripting&lt;/a&gt; at wikibooks&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://ss64.com/nt/&#34;&gt;An A-Z Index of the Windows CMD command line&lt;/a&gt; at ss64&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.microsoft.com/resources/documentation/windows/xp/all/proddocs/en-us/ntcmds.mspx?mfr=true&#34;&gt;Command-line reference A-Z&lt;/a&gt; at the Microsoft&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://steve-jansen.github.io/guides/windows-batch-scripting/index.html&#34;&gt;Guide to Windows Batch Scripting&lt;/a&gt; by steve jansen&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.csie.ntu.edu.tw/~r92092/ref/win32/win32scripting.html&#34;&gt;Win32 Shell Scripting Tutorial&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:2&#34;&gt;&lt;a href=&#34;http://www.microsoft.com/resources/documentation/windows/xp/all/proddocs/en-us/echo.mspx&#34;&gt;If you use echo off, the command prompt does not appear on your screen. To prevent echoing of a line, insert an at sign (@) in front of a command in a batch program.&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:2&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:1&#34;&gt;&lt;a href=&#34;https://en.wikibooks.org/wiki/Windows_Batch_Scripting#REM&#34;&gt;A comment command. Unlike double-colon (::), the command can be executed.&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:1&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:8&#34;&gt;&lt;a href=&#34;https://en.wikibooks.org/wiki/Windows_Batch_Scripting#Special_names&#34;&gt;Special names&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:8&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:3&#34;&gt;&lt;a href=&#34;https://helloacm.com/how-to-use-array-in-windows-batch-programming/&#34;&gt;How to Use Array in Windows Batch Programming?&lt;/a&gt;, &lt;a href=&#34;http://stackoverflow.com/a/18480952&#34;&gt;How to loop through array in batch?&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:3&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:4&#34;&gt;&lt;a href=&#34;http://stackoverflow.com/a/25791900&#34;&gt;http://stackoverflow.com/a/25791900&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:4&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:5&#34;&gt;command line에서 secure file copy를 지원하는 SCP client다.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:5&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:6&#34;&gt;command line connection utility로 host로 command를 실행할 수 있다.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:6&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:7&#34;&gt;&lt;a href=&#34;https://en.wikibooks.org/wiki/Windows_Batch_Scripting#Functions&#34;&gt;Functions&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:7&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:9&#34;&gt;&lt;a href=&#34;http://stackoverflow.com/a/2763907&#34;&gt;Batch file include external file for variables&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:9&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

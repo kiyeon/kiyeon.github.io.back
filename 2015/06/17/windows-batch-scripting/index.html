@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Windows Batch Scripting  &middot; My New Hugo Site</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="description" content="" />
+
+<meta name="keywords" content="">
+
+
+<meta property="og:title" content="Windows Batch Scripting  &middot; My New Hugo Site ">
+<meta property="og:site_name" content="My New Hugo Site"/>
+<meta property="og:url" content="http://example.org/2015/06/17/windows-batch-scripting/" />
+<meta property="og:locale" content="en-us">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content=""/>
+<meta property="og:article:published_time" content="2015-06-17T09:42:37Z" />
+<meta property="og:article:modified_time" content="2015-06-17T09:42:37Z" />
+
+  
+
+  
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@" />
+<meta name="twitter:creator" content="@" />
+<meta name="twitter:title" content="Windows Batch Scripting" />
+<meta name="twitter:description" content="" />
+<meta name="twitter:url" content="http://example.org/2015/06/17/windows-batch-scripting/" />
+<meta name="twitter:domain" content="http://example.org/">
+  
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "headline": "Windows Batch Scripting",
+    "author": {
+      "@type": "Person",
+      "name": "http://profiles.google.com/+?rel=author"
+    },
+    "datePublished": "2015-06-17",
+    "description": "",
+    "wordCount":  736 
+  }
+</script>
+
+
+
+<link rel="canonical" href="http://example.org/2015/06/17/windows-batch-scripting/" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
+<link rel="icon" href="/favicon.png">
+<meta name="generator" content="Hugo 0.18.1" />
+
+  <!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+
+
+    <link rel="stylesheet" href="http://example.org/css/bootswatch/default/bootstrap.min.css">
+
+
+<link rel="stylesheet" href="http://example.org/css/font-awesome.min.css">
+<link rel="stylesheet" href="http://example.org/css/style.css">
+
+
+  <link rel="stylesheet" href="http://example.org/css/highlight/default.css">
+
+
+</head>
+<body data-ng-app="myapp" data-ng-controller="MyController" data-ng-mouseleave="MouseLeave($event)">
+    <header id="main-header">
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        
+          
+          <a class="navbar-brand-img" href="/">
+            <img alt="" src="">
+            
+          </a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            
+            
+          </ul>
+        </div>
+        
+      </div>
+    </nav>
+  </header>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+  <div class="text-center">
+
+    <h1>Windows Batch Scripting
+</h1>
+
+    <div class="metas">
+<small>
+  <i class="fa fa-calendar"></i>
+  <time datetime="2015-06-17">17 Jun, 2015</time>
+</small>
+
+
+  <small>
+  &middot; Read in about 4 min
+  &middot; (736 words)
+</small>
+
+
+<div class="margin-10">
+
+</div>
+<br>
+</div>
+
+  </div>
+</div>
+
+      <div class="content">
+  <p>MS의 DOS로 시작해 Windows를 거쳐 유닉스와 리눅스를 만나고 이제는 유닉스(Mac)에 정착했다. 하지만 여전히 일선상에서는 Windows를 벗어나지 못하고 있다. 로컬OS는 Windows를 사용하지만 대부분 서비스를 이용하기위한(업무환경) 수단일뿐 실제 개발은 리눅스상에서 더 많이 한다. 좋든 실든 업무효율성을 높이기 위해 다양한 유틸리티와 Script가 필요하다.</p>
+
+<p>여러대의 서버로 파일을 업로드하는 간단한 스크립트를 살펴보며 Window Batch Script를 알아보자.</p>
+
+<p></p>
+
+<h2 id="echoing-off와-주석">Echoing off와 주석</h2>
+
+<p>Windows Batch Script를 실행하면 Command가 화면에 함께 출력된다. 좀 특이하지만 이런 출력을 <code>echo on/off</code>로 제어할 수 있다.<sup class="footnote-ref" id="fnref:2"><a rel="footnote" href="#fn:2">1</a></sup>  <a href="http://www.microsoft.com/resources/documentation/windows/xp/all/proddocs/en-us/echo.mspx">echo</a>자체도 command이므로 앞에 <code>@</code>를 붙여줘서 <a href="http://www.microsoft.com/resources/documentation/windows/xp/all/proddocs/en-us/echo.mspx">echo</a>역시 화면에 출력되지 않게 한다.</p>
+
+<p>newline을 출력하려면 <code>echo.</code>을 사용한다.</p>
+
+<p>주석은 <code>::</code>를 사용한다. <a href="http://www.microsoft.com/resources/documentation/windows/xp/all/proddocs/en-us/rem.mspx">REM</a>을 사용할 수도있지만 <a href="http://www.microsoft.com/resources/documentation/windows/xp/all/proddocs/en-us/rem.mspx">REM</a>은 <code>echo on/off</code>에 영향을 받는다.<sup class="footnote-ref" id="fnref:1"><a rel="footnote" href="#fn:1">2</a></sup></p>
+
+<pre><code class="language-batch">:: command echoing을 off한다. 앞에 @는 echo자체 역시 화면에 출력하지 않도록 한다.
+@echo off
+</code></pre>
+
+<h2 id="변수">변수</h2>
+
+<p>변수를 설정할때는 <a href="http://www.microsoft.com/resources/documentation/windows/xp/all/proddocs/en-us/set.mspx">SET</a>을 사용하며 변수명과 값사이는 공백이 들어가면 안된다. 사용할때는 <code>%변수명%</code>처럼 변수명 양옆을 <code>%</code>로 감싼다.</p>
+
+<pre><code class="language-batch">set ID=kiyeon
+set PW=niceguy
+set TODAY=%date:~0,4%%date:~5,2%%date:~8,2%
+set SRCFILE=c:/dump.zip
+set DSTFILE=./dump_%TODAY%.zip
+</code></pre>
+
+<p><a href="https://en.wikibooks.org/wiki/Windows_Batch_Scripting#DATE">date</a>는 시스템의 시간을 출력하는데 Script내에서 <code>%date%</code>로 사용할 수 있으며<sup class="footnote-ref" id="fnref:8"><a rel="footnote" href="#fn:8">3</a></sup> 출력포맷을 지정하고 싶다면 <code>set isodate=%date:~0,4%%date:~5,2%%date:~8,2%</code>처럼 사용한다.</p>
+
+<pre><code class="language-batch">set isodate=%date:~0,4%%date:~5,2%%date:~8,2%
+echo %isodate%
+20150617
+</code></pre>
+
+<h2 id="배열과-루프">배열과 루프</h2>
+
+<p>Batch script는 배열을 지원하지 않는다. 하지만 아래와 같은 꼼수로 배열처럼 사용할 수 있다.<sup class="footnote-ref" id="fnref:3"><a rel="footnote" href="#fn:3">4</a></sup></p>
+
+<p>루프는 <a href="http://www.microsoft.com/resources/documentation/windows/xp/all/proddocs/en-us/for.mspx">for</a>문이 있으며 값이 대입되는 변수의 명은 한자리 알파벳이여야 한다. <a href="http://www.microsoft.com/resources/documentation/windows/xp/all/proddocs/en-us/goto.mspx">goto</a>와 <a href="http://www.microsoft.com/resources/documentation/windows/xp/all/proddocs/en-us/if.mspx">if</a>문을 응용할 수도 있다.<sup class="footnote-ref" id="fnref:4"><a rel="footnote" href="#fn:4">5</a></sup></p>
+
+<p>이 예제에서는 <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/">PuTTY</a>에서 제공하는 <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html">pscp</a><sup class="footnote-ref" id="fnref:5"><a rel="footnote" href="#fn:5">6</a></sup>와 <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html">plink</a><sup class="footnote-ref" id="fnref:6"><a rel="footnote" href="#fn:6">7</a></sup>를 사용한다.</p>
+
+<p><code>goto :eof</code>(end of file)는 스크립트의 마지막으로 간다. 즉 스크립트를 종료한다. 함수를 스크립트 파일 하단에 위치시키는데 이 구문이 없으면 하단에 있는 명령들을 모두 실행하고 스크립트가 종료하게 된다.</p>
+
+<pre><code class="language-batch">set IP[01]=0.0.0.1
+set IP[02]=0.0.0.2
+set IP[03]=0.0.0.3
+set IP[04]=0.0.0.4
+
+call :alert Upload dump file ...
+:: echo %result% 
+
+for /F &quot;tokens=2 delims==&quot; %%v in ('set IP[') do (
+  pscp -pw %PW% %SRCFILE% %ID%@%%v:%DSTFILE%
+  call :result %%v
+
+  plink -pw %PW% -batch %ID%@%%v chmod 700 %DSTFILE%
+  call :result %%v
+)
+
+call :alert Finished upload.
+goto :eof
+</code></pre>
+
+<h2 id="함수">함수</h2>
+
+<p>함수역시 일반적인 프로그래밍언어에서 사용하는 방식과 다르게 <a href="http://www.microsoft.com/resources/documentation/windows/xp/all/proddocs/en-us/call.mspx">call</a>, labels, <a href="http://www.microsoft.com/resources/documentation/windows/xp/all/proddocs/en-us/setlocal.mspx">setlocal</a>, <a href="http://www.microsoft.com/resources/documentation/windows/xp/all/proddocs/en-us/endlocal.mspx">endlocal</a>을 이용하여 함수처럼 사용한다.</p>
+
+<p>함수는 스크립트 파일의 하단에 위치시키고, 인자는 <code>%1 %2</code>처럼 사용한다.</p>
+
+<p><a href="http://www.microsoft.com/resources/documentation/windows/xp/all/proddocs/en-us/exit.mspx">exit</a>는 batch script를 종료하거나 cmd.exe program을 종료시킨다. <code>/b</code>옵션과 함께 사용하면 현재 batch script를 종료한다. <code>/b</code>옵션과함께 <code>ExitCode</code>를 사용하면 <a href="https://en.wikibooks.org/wiki/Windows_Batch_Scripting#Special_names">ERRORLEVEL</a>에 <code>ExitCode</code>가 지정되어 call function의 성공 유무를 체크할 수 있다. <code>%ERRORLEVEL%</code>은 마지막으로 실행된 명령 또는 배치스크립트의  <a href="https://en.wikibooks.org/wiki/Windows_Batch_Scripting#Error_level">error level</a>을 리턴한다.</p>
+
+<p>return value를 전달하는 기능은 없지만 역시 꼼수로 변수에 리턴값을 지정해 사용할 수 있다.<sup class="footnote-ref" id="fnref:7"><a rel="footnote" href="#fn:7">8</a></sup></p>
+
+<p><a href="http://www.microsoft.com/resources/documentation/windows/xp/all/proddocs/en-us/setlocal.mspx">setlocal</a>과 <a href="http://www.microsoft.com/resources/documentation/windows/xp/all/proddocs/en-us/endlocal.mspx">endlocal</a>로 함수내에서 사용된 변수를 지역화할 수 있다.</p>
+
+<p>함수의 호출은 <code>call :label</code>로 한다.</p>
+
+<pre><code class="language-batch">:alert
+setlocal
+  echo ##########################################################
+  echo ## %*
+  echo ##########################################################
+  pause
+endlocal &amp; set result=end of alert
+exit /b 0
+
+:result
+setlocal
+  if %errorlevel% neq 0 (
+    echo Failed upload to the %1. Errorlevel:%errorlevel%
+  ) else (
+    echo Completed upload to the %1. Errorlevel:%errorlevel%
+  )
+endlocal &amp; set result=end of result
+exit /b 0
+</code></pre>
+
+<h2 id="재사용">재사용</h2>
+
+<p>공통으로 사용할 수 있는 설정및 함수를 따로 파일로 분리한뒤 <a href="http://www.microsoft.com/resources/documentation/windows/xp/all/proddocs/en-us/call.mspx">call</a>로 재사용할 수 있다.<sup class="footnote-ref" id="fnref:9"><a rel="footnote" href="#fn:9">9</a></sup> 위 예제를 재구성 해보자.
+``` batch sendfile.cmd
+@echo off
+call config.cmd
+set SRCFILE=c:/dump.zip
+set DSTFILE=./dump_%TODAY%.zip</p>
+
+<p>call function_alert.cmd Upload dump file &hellip;</p>
+
+<p>for /F &ldquo;tokens=2 delims==&rdquo; %%v in (&lsquo;set IP[&lsquo;) do (
+  pscp -pw %PW% %SRCFILE% %ID%@%%v:%DSTFILE%
+  call function_result.cmd %%v</p>
+
+<p>plink -pw %PW% -batch %ID%@%%v chmod 700 %DSTFILE%
+  call function_result.cmd %%v
+)</p>
+
+<p>call function_alert.cmd Finished upload.
+goto :eof</p>
+
+<pre><code>
+``` batch config.cmd
+set ID=kiyeon
+set PW=niceguy
+set IP[01]=0.0.0.1
+set IP[02]=0.0.0.2
+set IP[03]=0.0.0.3
+set IP[04]=0.0.0.4
+set TODAY=%date:~0,4%%date:~5,2%%date:~8,2%
+</code></pre>
+
+<p>``` batch function_alert.cmd
+:alert
+setlocal
+  echo ##########################################################
+  echo ## %*
+  echo ##########################################################
+  pause
+endlocal &amp; set result=end of alert
+exit /b 0</p>
+
+<pre><code>
+``` batch function_result.cmd
+:result
+setlocal
+  if %errorlevel% neq 0 (
+    echo Failed upload to the %1. Errorlevel:%errorlevel%
+  ) else (
+    echo Completed upload to the %1. Errorlevel:%errorlevel%
+  )
+endlocal &amp; set result=end of result
+exit /b 0
+</code></pre>
+
+<p>여러대의 서버에 파일을 업로드하는 간단한 스크립트를 만들어 봤다.</p>
+
+<p>여기서는 변수의 선언과 배열방식으로의 사용 반복문과 함수, 조건문과 외부 유틸리티를 사용하고 상호 동작하는 방법도 엿볼 수 있다.</p>
+
+<p>Windows의 Batch Script는 낯설지만 윈도우 환경에서 간편하게 사용하기에 괜찮은거 같다. 이상하지만 재미난 스크립트다.</p>
+
+<p>좀더 제대로 사용하려면 <a href="https://www.cygwin.com/">Cygwin</a>을 이용한 쉘스크립팅이나 <a href="https://en.wikipedia.org/wiki/Windows_PowerShell">Power Shell</a>이 있다.</p>
+
+<h2 id="references">References</h2>
+
+<ul>
+<li><a href="https://en.wikibooks.org/wiki/Windows_Batch_Scripting">Windows Batch Scripting</a> at wikibooks</li>
+<li><a href="http://ss64.com/nt/">An A-Z Index of the Windows CMD command line</a> at ss64</li>
+<li><a href="http://www.microsoft.com/resources/documentation/windows/xp/all/proddocs/en-us/ntcmds.mspx?mfr=true">Command-line reference A-Z</a> at the Microsoft</li>
+<li><a href="http://steve-jansen.github.io/guides/windows-batch-scripting/index.html">Guide to Windows Batch Scripting</a> by steve jansen</li>
+<li><a href="http://www.csie.ntu.edu.tw/~r92092/ref/win32/win32scripting.html">Win32 Shell Scripting Tutorial</a></li>
+</ul>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:2"><a href="http://www.microsoft.com/resources/documentation/windows/xp/all/proddocs/en-us/echo.mspx">If you use echo off, the command prompt does not appear on your screen. To prevent echoing of a line, insert an at sign (@) in front of a command in a batch program.</a>
+ <a class="footnote-return" href="#fnref:2"><sup>[return]</sup></a></li>
+<li id="fn:1"><a href="https://en.wikibooks.org/wiki/Windows_Batch_Scripting#REM">A comment command. Unlike double-colon (::), the command can be executed.</a>
+ <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
+<li id="fn:8"><a href="https://en.wikibooks.org/wiki/Windows_Batch_Scripting#Special_names">Special names</a>
+ <a class="footnote-return" href="#fnref:8"><sup>[return]</sup></a></li>
+<li id="fn:3"><a href="https://helloacm.com/how-to-use-array-in-windows-batch-programming/">How to Use Array in Windows Batch Programming?</a>, <a href="http://stackoverflow.com/a/18480952">How to loop through array in batch?</a>
+ <a class="footnote-return" href="#fnref:3"><sup>[return]</sup></a></li>
+<li id="fn:4"><a href="http://stackoverflow.com/a/25791900">http://stackoverflow.com/a/25791900</a>
+ <a class="footnote-return" href="#fnref:4"><sup>[return]</sup></a></li>
+<li id="fn:5">command line에서 secure file copy를 지원하는 SCP client다.
+ <a class="footnote-return" href="#fnref:5"><sup>[return]</sup></a></li>
+<li id="fn:6">command line connection utility로 host로 command를 실행할 수 있다.
+ <a class="footnote-return" href="#fnref:6"><sup>[return]</sup></a></li>
+<li id="fn:7"><a href="https://en.wikibooks.org/wiki/Windows_Batch_Scripting#Functions">Functions</a>
+ <a class="footnote-return" href="#fnref:7"><sup>[return]</sup></a></li>
+<li id="fn:9"><a href="http://stackoverflow.com/a/2763907">Batch file include external file for variables</a>
+ <a class="footnote-return" href="#fnref:9"><sup>[return]</sup></a></li>
+</ol>
+</div>
+</div>
+
+
+      <footer>
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      
+  
+    <nav><ul class="pager">
+    
+        <li class="previous">
+          <a href="http://example.org/2015/06/12/history-command/" title="History Command">
+            <span aria-hidden="true">&larr;</span>Previous
+          </a>
+        </li>
+    
+
+    
+      <li class="next">
+        <a href="http://example.org/2015/06/19/curses-library/" title="Curses Library">
+            Next <span aria-hidden="true">&rarr;</span>
+        </a>
+      </li>
+    
+    </ul> </nav>
+  
+
+
+</div>
+
+  <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
+  
+
+</div>
+
+</footer>
+
+    </div>
+    
+  </div>
+</div>
+      
+<footer class="footer hidden-print">
+  <div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+           <div class="pull-left">
+  <a class="toplink" href="javascript:" id="return-to-top">back to top</a>
+</div>
+<div class="pull-right">
+
+</div>
+
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+              
+    
+<div class="container footline">
+    <small>
+</small>
+</div>
+
+
+    
+
+
+        </div>
+    </div>
+  </div>
+</footer>
+
+    
+
+<script src="http://example.org/js/jquery.min.js"></script>
+<script src="http://example.org/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+<script src="/js/popover/angular-storage.min.js"></script>
+
+
+
+<script src="http://example.org/js/highlight.pack.js"></script>
+<script src="http://example.org/js/site.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+var ENABLE_POPOVER = ""; 
+var EXPIRE_COOKIE = ""; 
+var SHOW_MODAL_TIMEOUT = ""; 
+var MOUSE_LEAVE = ""; 
+var MODAL_SIZE = ""; 
+var POST_URL = ""; 
+var SIGNUP_HEADER = "";
+var HEADER_IMAGE = "";
+var IMG_DESCRIPTION = "";
+var SIGNUP_TEXT = "";
+var INPUT_PLACEHOLDER = "";
+var SUBMIT_BUTTON = "";
+var SUCCESS_MESSAGE = "";
+var ERROR_MESSAGE = "";
+var OPTIN = "";
+var COOKIE_NAME = "";
+</script>
+<script src="/js/popover/angular-modal-service.min.js"></script>
+<script src="/js/angular-ismobile.min.js"></script>
+<script src="/js/popover/popover.min.js"></script>
+
+  </body>
+</html>
+
