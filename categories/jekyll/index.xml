@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Jekyll on Kiyeon&#39;s Blog</title>
-    <link>http://blog2.kiyeon.net/categories/jekyll/index.xml</link>
+    <link>http://blog.kiyeon.net/categories/jekyll/index.xml</link>
     <description>Recent content in Jekyll on Kiyeon&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-kr</language>
-    <atom:link href="http://blog2.kiyeon.net/categories/jekyll/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://blog.kiyeon.net/categories/jekyll/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Jekyll</title>
-      <link>http://blog2.kiyeon.net/2016/02/10/Jekyll/</link>
+      <link>http://blog.kiyeon.net/2016/02/10/Jekyll/</link>
       <pubDate>Wed, 10 Feb 2016 14:28:00 +0000</pubDate>
       
-      <guid>http://blog2.kiyeon.net/2016/02/10/Jekyll/</guid>
+      <guid>http://blog.kiyeon.net/2016/02/10/Jekyll/</guid>
       <description>&lt;p&gt;Link&lt;/p&gt;
 
 &lt;ul&gt;
