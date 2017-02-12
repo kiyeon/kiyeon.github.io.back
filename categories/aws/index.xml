@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Aws on My New Hugo Site</title>
-    <link>http://example.org/categories/aws/index.xml</link>
-    <description>Recent content in Aws on My New Hugo Site</description>
+    <title>Aws on Kiyeon&#39;s Blog</title>
+    <link>http://kiyeon.github.io/categories/aws/index.xml</link>
+    <description>Recent content in Aws on Kiyeon&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="http://example.org/categories/aws/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://kiyeon.github.io/categories/aws/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>AWS EBS 확장및 추가하기</title>
-      <link>http://example.org/2015/11/28/aws-ebs-%E1%84%92%E1%85%AA%E1%86%A8%E1%84%8C%E1%85%A1%E1%86%BC%E1%84%86%E1%85%B5%E1%86%BE-%E1%84%8E%E1%85%AE%E1%84%80%E1%85%A1%E1%84%92%E1%85%A1%E1%84%80%E1%85%B5/</link>
+      <link>http://kiyeon.github.io/2015/11/28/aws-EBS-%E1%84%92%E1%85%AA%E1%86%A8%E1%84%8C%E1%85%A1%E1%86%BC%E1%84%86%E1%85%B5%E1%86%BE-%E1%84%8E%E1%85%AE%E1%84%80%E1%85%A1%E1%84%92%E1%85%A1%E1%84%80%E1%85%B5/</link>
       <pubDate>Sat, 28 Nov 2015 18:40:00 +0000</pubDate>
       
-      <guid>http://example.org/2015/11/28/aws-ebs-%E1%84%92%E1%85%AA%E1%86%A8%E1%84%8C%E1%85%A1%E1%86%BC%E1%84%86%E1%85%B5%E1%86%BE-%E1%84%8E%E1%85%AE%E1%84%80%E1%85%A1%E1%84%92%E1%85%A1%E1%84%80%E1%85%B5/</guid>
+      <guid>http://kiyeon.github.io/2015/11/28/aws-EBS-%E1%84%92%E1%85%AA%E1%86%A8%E1%84%8C%E1%85%A1%E1%86%BC%E1%84%86%E1%85%B5%E1%86%BE-%E1%84%8E%E1%85%AE%E1%84%80%E1%85%A1%E1%84%92%E1%85%A1%E1%84%80%E1%85%B5/</guid>
       <description>
 
 &lt;p&gt;AWS EC2의 디스크가 Full이 되어 확장이 필요했다.&lt;/p&gt;

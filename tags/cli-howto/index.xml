@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Cli Howto on My New Hugo Site</title>
-    <link>http://example.org/tags/cli-howto/index.xml</link>
-    <description>Recent content in Cli Howto on My New Hugo Site</description>
+    <title>Cli Howto on Kiyeon&#39;s Blog</title>
+    <link>http://kiyeon.github.io/tags/cli-howto/index.xml</link>
+    <description>Recent content in Cli Howto on Kiyeon&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="http://example.org/tags/cli-howto/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://kiyeon.github.io/tags/cli-howto/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Change locale in linux</title>
-      <link>http://example.org/2015/06/24/change-locale-in-linux/</link>
+      <link>http://kiyeon.github.io/2015/06/24/change-locale-in-linux/</link>
       <pubDate>Wed, 24 Jun 2015 09:28:08 +0000</pubDate>
       
-      <guid>http://example.org/2015/06/24/change-locale-in-linux/</guid>
+      <guid>http://kiyeon.github.io/2015/06/24/change-locale-in-linux/</guid>
       <description>&lt;p&gt;Locale은 &lt;strong&gt;&amp;lsquo;지역, 언어&amp;rsquo;&lt;/strong&gt;정보로 프로그램은 입/출력시 사용자가 설정한 locale에 따라 인코딩을 적용하여 메세지를 출력한다.&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:1&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;현재값&#34;&gt;현재값&lt;/h2&gt;

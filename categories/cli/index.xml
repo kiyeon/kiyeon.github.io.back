@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Cli on My New Hugo Site</title>
-    <link>http://example.org/categories/cli/index.xml</link>
-    <description>Recent content in Cli on My New Hugo Site</description>
+    <title>Cli on Kiyeon&#39;s Blog</title>
+    <link>http://kiyeon.github.io/categories/cli/index.xml</link>
+    <description>Recent content in Cli on Kiyeon&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="http://example.org/categories/cli/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://kiyeon.github.io/categories/cli/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>History Command</title>
-      <link>http://example.org/2015/06/12/history-command/</link>
+      <link>http://kiyeon.github.io/2015/06/12/history-command/</link>
       <pubDate>Fri, 12 Jun 2015 11:35:51 +0000</pubDate>
       
-      <guid>http://example.org/2015/06/12/history-command/</guid>
+      <guid>http://kiyeon.github.io/2015/06/12/history-command/</guid>
       <description>&lt;p&gt;Command line에서 명령을 실행하면 해당 명령이 기록에 남는다. 이 기록을 살펴보는 명령이 &lt;code&gt;history&lt;/code&gt;다.&lt;/p&gt;
 
 &lt;h2 id=&#34;설정&#34;&gt;설정&lt;/h2&gt;
@@ -83,10 +83,10 @@ export HISTFILE=/root/.commandline_warrior  # 히스토리 로그 파일 변경
     
     <item>
       <title>SSH Escape</title>
-      <link>http://example.org/2015/06/11/ssh-escape/</link>
+      <link>http://kiyeon.github.io/2015/06/11/ssh-escape/</link>
       <pubDate>Thu, 11 Jun 2015 17:31:02 +0000</pubDate>
       
-      <guid>http://example.org/2015/06/11/ssh-escape/</guid>
+      <guid>http://kiyeon.github.io/2015/06/11/ssh-escape/</guid>
       <description>&lt;p&gt;ssh접속중 탈출하고 싶다면 탈출키 &lt;code&gt;~&lt;/code&gt;를 사용한다.&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;
@@ -126,10 +126,10 @@ Supported escape sequences:
     
     <item>
       <title>rotate nohup out file</title>
-      <link>http://example.org/2015/06/11/rotate-nohup-out-file/</link>
+      <link>http://kiyeon.github.io/2015/06/11/rotate-nohup-out-file/</link>
       <pubDate>Thu, 11 Jun 2015 09:07:45 +0000</pubDate>
       
-      <guid>http://example.org/2015/06/11/rotate-nohup-out-file/</guid>
+      <guid>http://kiyeon.github.io/2015/06/11/rotate-nohup-out-file/</guid>
       <description>&lt;p&gt;nohup은 터미널이 종료되어도 프로세스를 종료시키지 않고 동작시킬때 사용한다.&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:1&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;% nohup COMMAND        # nohup.out에 로그가 기록된다.

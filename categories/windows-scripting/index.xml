@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Windows Scripting on My New Hugo Site</title>
-    <link>http://example.org/categories/windows-scripting/index.xml</link>
-    <description>Recent content in Windows Scripting on My New Hugo Site</description>
+    <title>Windows Scripting on Kiyeon&#39;s Blog</title>
+    <link>http://kiyeon.github.io/categories/windows-scripting/index.xml</link>
+    <description>Recent content in Windows Scripting on Kiyeon&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="http://example.org/categories/windows-scripting/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://kiyeon.github.io/categories/windows-scripting/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Windows Batch Scripting</title>
-      <link>http://example.org/2015/06/17/windows-batch-scripting/</link>
+      <link>http://kiyeon.github.io/2015/06/17/windows-batch-scripting/</link>
       <pubDate>Wed, 17 Jun 2015 09:42:37 +0000</pubDate>
       
-      <guid>http://example.org/2015/06/17/windows-batch-scripting/</guid>
+      <guid>http://kiyeon.github.io/2015/06/17/windows-batch-scripting/</guid>
       <description>&lt;p&gt;MS의 DOS로 시작해 Windows를 거쳐 유닉스와 리눅스를 만나고 이제는 유닉스(Mac)에 정착했다. 하지만 여전히 일선상에서는 Windows를 벗어나지 못하고 있다. 로컬OS는 Windows를 사용하지만 대부분 서비스를 이용하기위한(업무환경) 수단일뿐 실제 개발은 리눅스상에서 더 많이 한다. 좋든 실든 업무효율성을 높이기 위해 다양한 유틸리티와 Script가 필요하다.&lt;/p&gt;
 
 &lt;p&gt;여러대의 서버로 파일을 업로드하는 간단한 스크립트를 살펴보며 Window Batch Script를 알아보자.&lt;/p&gt;
