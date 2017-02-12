@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Cli on Kiyeon&#39;s Blog</title>
-    <link>http://kiyeon.github.io/tags/cli/index.xml</link>
+    <link>https://kiyeon.github.io/tags/cli/index.xml</link>
     <description>Recent content in Cli on Kiyeon&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="http://kiyeon.github.io/tags/cli/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://kiyeon.github.io/tags/cli/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>프로그래머를 위한 ack(like-grep)</title>
-      <link>http://kiyeon.github.io/2015/06/09/peurogeuraemeoreul-wihan-ack-like-grep/</link>
+      <link>https://kiyeon.github.io/2015/06/09/peurogeuraemeoreul-wihan-ack-like-grep/</link>
       <pubDate>Tue, 09 Jun 2015 10:27:57 +0000</pubDate>
       
-      <guid>http://kiyeon.github.io/2015/06/09/peurogeuraemeoreul-wihan-ack-like-grep/</guid>
+      <guid>https://kiyeon.github.io/2015/06/09/peurogeuraemeoreul-wihan-ack-like-grep/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://unixhelp.ed.ac.uk/CGI/man-cgi?grep&#34;&gt;grep&lt;/a&gt;은 텍스트에서 키워드를 찾아내는 툴이다. 다음과 같이 사용한다.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;% lsb_release --all | grep -i desc
